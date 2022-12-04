@@ -242,7 +242,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4425428723088313499, guid: fc9b148a2950aaf4cba8422632222c5d, type: 3}
   m_PrefabInstance: {fileID: 109543824}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &592672533
+--- !u!114 &592672526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,9 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3f08316c84dd743918d92ff9a03faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxComboDelay: 1.5
-  hitCd: 0.4
-  afterComboCd: 1
+  _weapon: {fileID: 11400000, guid: d08df3377e15f9747a23fd26e894f351, type: 2}
   comboNum: 0
 --- !u!1 &746283931
 GameObject:

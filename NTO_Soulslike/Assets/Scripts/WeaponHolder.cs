@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComboSystem : MonoBehaviour
+public class WeaponHolder : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float maxComboDelay;
-    [SerializeField] private float hitCd;
-    [SerializeField] private float afterComboCd;
+    public Weapon _weapon;
+
     public float comboNum = 0;
     private float prevTick;
     private bool CanHit = true;
@@ -27,7 +26,7 @@ public class ComboSystem : MonoBehaviour
     public void Click()
     {
         float nowTick = Time.time;
-        if(nowTick - prevTick >= maxComboDelay)
+        if(nowTick - prevTick >= _weapon.maxComboDelay)
         {
             comboNum = 0;
             prevTick = Time.time;
@@ -38,7 +37,7 @@ public class ComboSystem : MonoBehaviour
         
         if(comboNum == 3)
         {
-            
+            _weapon.SpecialAbility();
             StartCoroutine(AfterComboCd());
             comboNum = 0;
 
@@ -59,14 +58,16 @@ public class ComboSystem : MonoBehaviour
     }
     private IEnumerator HitCd()
     {
-        yield return new WaitForSeconds(hitCd);
+        yield return new WaitForSeconds(_weapon.hitCd);
         CanHit = true;
         yield break;
     }
     private IEnumerator AfterComboCd()
     {
-        yield return new WaitForSeconds(afterComboCd);
+        yield return new WaitForSeconds(_weapon.afterComboCd);
         CanHit = true;
         yield break;
     }
+
+
 }
