@@ -6,8 +6,11 @@ public class WeaponHolder : MonoBehaviour
 {
     // Start is called before the first frame update
     public Weapon _weapon;
+    public Transform hitboxCenter;
+    public LayerMask WhatIsEnemies;
+   
 
-    public float comboNum = 0;
+    private float comboNum = 0; 
     private float prevTick;
     private bool CanHit = true;
     void Start()
@@ -37,15 +40,16 @@ public class WeaponHolder : MonoBehaviour
         
         if(comboNum == 3)
         {
-            _weapon.SpecialAbility();
+            _weapon.SpecialAbility(this);
             StartCoroutine(AfterComboCd());
             comboNum = 0;
 
         }
         else
         {
-            StartCoroutine(HitCd());
             
+            StartCoroutine(HitCd());
+            Attack();
             
         }
         Debug.Log("Hit");
@@ -54,6 +58,23 @@ public class WeaponHolder : MonoBehaviour
 
         
 
+
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.matrix = Matrix4x4.TRS(hitboxCenter.position, hitboxCenter.rotation, hitboxCenter.localScale);
+        Gizmos.DrawCube(Vector3.zero, new Vector3(0, 2, _weapon.weaponRange));
+
+    }
+    public void Attack()
+    {
+        Collider[] Enemies = Physics.OverlapBox(hitboxCenter.position, new Vector3(0, 2, _weapon.weaponRange), hitboxCenter.rotation, WhatIsEnemies);
+        
+        foreach (Collider enemy in Enemies) {
+            enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
+            
+        }
 
     }
     private IEnumerator HitCd()
@@ -68,6 +89,8 @@ public class WeaponHolder : MonoBehaviour
         CanHit = true;
         yield break;
     }
+
+    
 
 
 }

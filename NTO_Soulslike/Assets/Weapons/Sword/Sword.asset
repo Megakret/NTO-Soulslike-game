@@ -16,5 +16,5 @@ MonoBehaviour:
   Damage: 5
   hitCd: 0.4
   afterComboCd: 1
-  weaponRange: 5
+  weaponRange: 1
   maxComboDelay: 1.5

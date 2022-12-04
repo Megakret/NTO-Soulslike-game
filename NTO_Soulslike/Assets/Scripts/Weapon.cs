@@ -11,5 +11,6 @@ public class Weapon : ScriptableObject
     public float weaponRange;
     public float maxComboDelay;
 
-    public virtual void SpecialAbility() { }
+    public virtual void SpecialAbility(WeaponHolder weapon) { }
 }
+    
