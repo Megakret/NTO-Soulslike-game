@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponHolder : MonoCache
 {
-    // Start is called before the first frame update
+    
     public Weapon _weapon;
     public Transform hitboxCenter;
     public LayerMask WhatIsEnemies;
@@ -26,10 +26,10 @@ public class WeaponHolder : MonoCache
             Click();
         }
     }
-    public void Click()
+    public void Click() // Удар
     {
         float nowTick = Time.time;
-        if(nowTick - prevTick >= _weapon.maxComboDelay)
+        if(nowTick - prevTick >= _weapon.maxComboDelay) // Сброс комбо, если игрок не атаковал слишком долго
         {
             comboNum = 0;
             prevTick = Time.time;
@@ -38,7 +38,7 @@ public class WeaponHolder : MonoCache
         }
         comboNum++;
         
-        if(comboNum == 3)
+        if(comboNum == 3) // Специальная атака
         {
             _weapon.SpecialAbility(this);
             StartCoroutine(AfterComboCd());
@@ -60,16 +60,10 @@ public class WeaponHolder : MonoCache
 
 
     }
-    private void OnDrawGizmos()
+    
+    public void Attack() // Сама атака
     {
-        Gizmos.color = Color.red;
-        Gizmos.matrix = Matrix4x4.TRS(hitboxCenter.position, hitboxCenter.rotation, hitboxCenter.localScale);
-        Gizmos.DrawCube(Vector3.zero, new Vector3(0, 2, _weapon.weaponRange));
-
-    }
-    public void Attack()
-    {
-        Collider[] Enemies = Physics.OverlapBox(hitboxCenter.position, new Vector3(0, 2, _weapon.weaponRange), hitboxCenter.rotation, WhatIsEnemies);
+        Collider[] Enemies = Physics.OverlapBox(hitboxCenter.position - new Vector3(0,0,_weapon.weaponRange/2), new Vector3(1, 2, _weapon.weaponRange), hitboxCenter.rotation, WhatIsEnemies);
         
         foreach (Collider enemy in Enemies) {
             enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
@@ -77,18 +71,21 @@ public class WeaponHolder : MonoCache
         }
 
     }
-    private IEnumerator HitCd()
+    
+    private IEnumerator HitCd() // кд после удара
     {
         yield return new WaitForSeconds(_weapon.hitCd);
         CanHit = true;
         yield break;
     }
-    private IEnumerator AfterComboCd()
+    private IEnumerator AfterComboCd() // кд после последнего удара в комбо
     {
         yield return new WaitForSeconds(_weapon.afterComboCd);
         CanHit = true;
         yield break;
     }
+
+
 
     
 
