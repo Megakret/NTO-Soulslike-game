@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : ScriptableObject
 {
     public string weaponName;
-    public int Damage;
+    public float Damage;
     public float hitCd;
     public float afterComboCd;
     public float weaponRange;
