@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class UpdateManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void LateUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        for (int i = 0; i < MonoCache.allUpdate.Count; i++) MonoCache.allUpdate[i].Tick();
         
     }
 }
