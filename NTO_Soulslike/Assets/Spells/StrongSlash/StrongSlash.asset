@@ -16,3 +16,6 @@ MonoBehaviour:
   manaCost: 0
   DamageMultiplier: 3
   RangeMultiplier: 1.5
+  WhatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 128

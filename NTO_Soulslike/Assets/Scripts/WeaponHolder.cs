@@ -8,14 +8,16 @@ public class WeaponHolder : MonoCache
     public Weapon _weapon;
     public Transform hitboxCenter;
     public LayerMask WhatIsEnemies;
-   
+    public HitboxShow hitboxShow;
 
     private float comboNum = 0; 
     private float prevTick;
     private bool CanHit = true;
+    
     void Start()
     {
         prevTick = Time.time;
+        
     }
 
     // Update is called once per frame
@@ -40,7 +42,7 @@ public class WeaponHolder : MonoCache
         
         if(comboNum == 3) // Специальная атака
         {
-            _weapon.SpecialAbility(this);
+            _weapon.SpecialAbility(this,hitboxShow);
             StartCoroutine(AfterComboCd());
             comboNum = 0;
 
@@ -63,15 +65,17 @@ public class WeaponHolder : MonoCache
     
     public void Attack() // Сама атака
     {
-        Collider[] Enemies = Physics.OverlapBox(hitboxCenter.position - new Vector3(0,0,_weapon.weaponRange/2), new Vector3(1, 2, _weapon.weaponRange), hitboxCenter.rotation, WhatIsEnemies);
-        
+        Collider[] Enemies = Physics.OverlapBox(hitboxCenter.position -  hitboxCenter.forward * _weapon.weaponRange / 2, new Vector3(1, 2, _weapon.weaponRange), hitboxCenter.rotation, WhatIsEnemies);
+        hitboxShow.BoxShow(hitboxCenter.position - hitboxCenter.forward * _weapon.weaponRange / 2, new Vector3(1, 2, _weapon.weaponRange));
         foreach (Collider enemy in Enemies) {
             enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
             
         }
 
     }
+
     
+
     private IEnumerator HitCd() // кд после удара
     {
         yield return new WaitForSeconds(_weapon.hitCd);

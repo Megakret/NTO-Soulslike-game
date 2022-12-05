@@ -6,6 +6,7 @@ public class ManaHandler : MonoCache
 {
     private static int mana;
     public GameObject plr;
+    public HitboxShow _hitboxShow;
     public Spell[] spells = new Spell[3];
     private KeyCode[] KeyCodes = new KeyCode[] {KeyCode.E, KeyCode.R, KeyCode.T};
 
@@ -31,7 +32,7 @@ public class ManaHandler : MonoCache
             if (Input.GetKeyDown(KeyCodes[i]) && spells[i] != null)
             {
                 Spell spell = spells[i];
-                spell.Activate(plr);
+                spell.Activate(this,_hitboxShow);
                 
                 
             }

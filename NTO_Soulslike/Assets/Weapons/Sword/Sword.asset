@@ -18,3 +18,4 @@ MonoBehaviour:
   afterComboCd: 1
   weaponRange: 1
   maxComboDelay: 1.5
+  SpecialRadius: 5
