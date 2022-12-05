@@ -12,7 +12,9 @@ public class Sword : Weapon
         hitboxShow.SphereShow(weaponManager.gameObject.transform.position, SpecialRadius);
         foreach (Collider enemy in Enemies)
         {
+            
             enemy.GetComponent<Enemy>().TakeDamage(10);
+            ManaHandler.Mana += ManaPerHit;
 
         }
 

@@ -9,7 +9,8 @@ public class WeaponHolder : MonoCache
     public Transform hitboxCenter;
     public LayerMask WhatIsEnemies;
     public HitboxShow hitboxShow;
-
+    public int ManaPerHit;
+    
     private float comboNum = 0; 
     private float prevTick;
     private bool CanHit = true;
@@ -17,6 +18,7 @@ public class WeaponHolder : MonoCache
     void Start()
     {
         prevTick = Time.time;
+        
         
     }
 
@@ -66,10 +68,10 @@ public class WeaponHolder : MonoCache
     public void Attack() // Сама атака
     {
         Collider[] Enemies = Physics.OverlapBox(hitboxCenter.position -  hitboxCenter.forward * _weapon.weaponRange / 2, new Vector3(1, 2, _weapon.weaponRange), hitboxCenter.rotation, WhatIsEnemies);
-        hitboxShow.BoxShow(hitboxCenter.position - hitboxCenter.forward * _weapon.weaponRange / 2, new Vector3(1, 2, _weapon.weaponRange));
+        hitboxShow.BoxShow(hitboxCenter.position - hitboxCenter.forward * _weapon.weaponRange / 2, new Vector3(1, 2, _weapon.weaponRange), hitboxCenter.rotation);
         foreach (Collider enemy in Enemies) {
             enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
-            
+            ManaHandler.Mana += _weapon.ManaPerHit;
         }
 
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ManaHandler : MonoCache
 {
-    private static int mana;
+    private static int mana = 0;
     public GameObject plr;
     public HitboxShow _hitboxShow;
     public Spell[] spells = new Spell[3];
@@ -12,7 +12,7 @@ public class ManaHandler : MonoCache
 
     
 
-    public int Mana
+    public static int Mana
     {
         get
         {
@@ -20,7 +20,17 @@ public class ManaHandler : MonoCache
         }
         set
         {
-            mana = value; // «десь можно прописать код дл€ изменени€ шкалы маны.
+            if(value > 100)
+            {
+                mana = 100;
+            }
+            else
+            {
+                mana = value; 
+                Debug.Log($"Mana is: {mana}");
+            }
+            // «десь можно прописать код дл€ изменени€ шкалы маны.
+            
         }
     }
 
@@ -29,10 +39,11 @@ public class ManaHandler : MonoCache
         for (int i = 0; i < spells.Length; i++)
         {
             
-            if (Input.GetKeyDown(KeyCodes[i]) && spells[i] != null)
+            if (Input.GetKeyDown(KeyCodes[i]) && spells[i] != null && mana > spells[i].manaCost)
             {
                 Spell spell = spells[i];
                 spell.Activate(this,_hitboxShow);
+                Mana -= spell.manaCost;
                 
                 
             }

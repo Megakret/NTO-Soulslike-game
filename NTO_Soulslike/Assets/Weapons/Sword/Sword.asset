@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Sword
   Damage: 5
+  ManaPerHit: 10
   hitCd: 0.4
   afterComboCd: 1
   weaponRange: 1
   maxComboDelay: 1.5
-  SpecialRadius: 5
+  SpecialRadius: 3

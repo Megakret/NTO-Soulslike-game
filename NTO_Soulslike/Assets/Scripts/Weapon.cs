@@ -6,10 +6,12 @@ public class Weapon : ScriptableObject
 {
     public string weaponName;
     public float Damage;
+    public int ManaPerHit;
     public float hitCd;
     public float afterComboCd;
     public float weaponRange;
     public float maxComboDelay;
+    
 
     public virtual void SpecialAbility(WeaponHolder weapon, HitboxShow hitboxShow) { }
 }
