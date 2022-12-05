@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: StrongSlash
   m_EditorClassIdentifier: 
   Name: Slash
-  manaCost: 0
+  manaCost: 30
   DamageMultiplier: 3
-  RangeMultiplier: 1.5
+  RangeMultiplier: 2
+  WhatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 128

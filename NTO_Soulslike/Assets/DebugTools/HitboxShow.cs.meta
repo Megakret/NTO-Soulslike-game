@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: a80659572bc26f94e96c5d50c99dc621
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - CubeHitbox: {fileID: 7335952022375511580, guid: 04afa69bb3f125545a075713d6cd58ea, type: 3}
+  - SphereHitbox: {fileID: 7198996590065252604, guid: 18541d38d6467e94fb67a357f73dd252, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

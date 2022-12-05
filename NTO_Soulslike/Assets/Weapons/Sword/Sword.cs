@@ -4,13 +4,17 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Sword : Weapon
 {
-    public override void SpecialAbility(WeaponHolder weaponManager) // Здесь код особенной способки на 3 ударе
+    public float SpecialRadius;
+    public override void SpecialAbility(WeaponHolder weaponManager, HitboxShow hitboxShow) // Здесь код особенной способки на 3 ударе
     {
         Debug.Log("Final Hit");
-        Collider[] Enemies = Physics.OverlapSphere(weaponManager.gameObject.transform.position, 10, weaponManager.WhatIsEnemies);
+        Collider[] Enemies = Physics.OverlapSphere(weaponManager.gameObject.transform.position, SpecialRadius, weaponManager.WhatIsEnemies);
+        hitboxShow.SphereShow(weaponManager.gameObject.transform.position, SpecialRadius);
         foreach (Collider enemy in Enemies)
         {
+            
             enemy.GetComponent<Enemy>().TakeDamage(10);
+            ManaHandler.Mana += ManaPerHit;
 
         }
 

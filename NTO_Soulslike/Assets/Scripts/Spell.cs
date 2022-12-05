@@ -7,5 +7,5 @@ public class Spell : ScriptableObject
     public string Name;
     public int manaCost;
    
-    public virtual void Activate(GameObject plr) { }
+    public virtual void Activate(ManaHandler manaHandler, HitboxShow hitboxShow) { }
 }
