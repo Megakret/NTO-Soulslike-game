@@ -69,8 +69,8 @@ public class WeaponHolder : MonoCache
         }
 
         Debug.Log("Hit");
-        personController.SlowDown();
-        StartCoroutine(ToIdle());
+        
+        StartCoroutine(PlayerStates.ChangeState(_weapon.hitCd,PlayerStates.States.Idle));
         CanHit = false;
         prevTick = Time.time;
 
@@ -102,12 +102,7 @@ public class WeaponHolder : MonoCache
         CanHit = true;
         yield break;
     }
-    private IEnumerator ToIdle()
-    {
-        yield return new WaitForSeconds(_weapon.hitCd);
-        PlayerStates.currentState = PlayerStates.States.Idle;
-        yield break;
-    }
+    
     private IEnumerator AfterComboCd() // кд после последнего удара в комбо
     {
         yield return new WaitForSeconds(_weapon.afterComboCd);

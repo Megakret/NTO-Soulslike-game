@@ -33,6 +33,10 @@ public class ThirdPersonController : MonoCache
         Vector3 direction = new Vector3(XVel, 0, ZVel).normalized;
         if(direction.magnitude >= 0.1f && (PlayerStates.currentState == PlayerStates.States.Idle || PlayerStates.currentState == PlayerStates.States.Attack))
         {
+            if(PlayerStates.currentState == PlayerStates.States.Attack)
+            {
+                SlowDown();
+            }
             currentTick += Time.deltaTime;
             float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + CameraPos.eulerAngles.y;
             float Angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetAngle, ref TurnSmoothVel,TurnSmooth);

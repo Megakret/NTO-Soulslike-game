@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Slash
   manaCost: 30
+  microCd: 0.5
   DamageMultiplier: 3
   RangeMultiplier: 2
   WhatIsEnemies:

@@ -11,10 +11,7 @@ public class Dodging : MonoCache
     public float DodgeSpeed;
     public float DodgeTime;
     
-    private void Awake()
-    {
-        
-    }
+    
     public override void OnTick()
     {
         if (Input.GetKeyDown(KeyCode.Q) && PlayerStates.currentState == PlayerStates.States.Idle)
@@ -22,7 +19,8 @@ public class Dodging : MonoCache
             StartCoroutine(Dodge());
             PlayerStates.currentState = PlayerStates.States.Dodge;
             PlayerStates.IFrame = true;
-            
+            StartCoroutine(PlayerStates.ChangeState(DodgeTime, PlayerStates.States.Idle));
+
         }
     }
     private IEnumerator Dodge()
@@ -35,7 +33,6 @@ public class Dodging : MonoCache
             Debug.Log(personController.movDir.normalized);
 
         }
-        PlayerStates.currentState = PlayerStates.States.Idle;
         PlayerStates.IFrame = false;
 
         yield break;

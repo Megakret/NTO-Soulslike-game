@@ -39,9 +39,12 @@ public class ManaHandler : MonoCache
         for (int i = 0; i < spells.Length; i++)
         {
             
-            if (Input.GetKeyDown(KeyCodes[i]) && spells[i] != null && mana > spells[i].manaCost)
+            if (Input.GetKeyDown(KeyCodes[i]) && spells[i] != null && mana > spells[i].manaCost && PlayerStates.currentState == PlayerStates.States.Idle)
             {
+                PlayerStates.currentState = PlayerStates.States.Attack;
+                
                 Spell spell = spells[i];
+                StartCoroutine(PlayerStates.ChangeState(spell.microCd,PlayerStates.States.Idle));
                 spell.Activate(this,_hitboxShow, plrCenter);
                 Mana -= spell.manaCost;
                 
