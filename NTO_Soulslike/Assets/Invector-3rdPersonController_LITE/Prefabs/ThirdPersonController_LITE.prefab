@@ -353,6 +353,8 @@ GameObject:
   - component: {fileID: 4425428723088313496}
   - component: {fileID: 592672526}
   - component: {fileID: 800293437}
+  - component: {fileID: 3683135857381765439}
+  - component: {fileID: 7859034333990321711}
   m_Layer: 0
   m_Name: ThirdPersonController_LITE
   m_TagString: Player
@@ -440,9 +442,9 @@ MonoBehaviour:
     rotationSpeed: 16
     walkByDefault: 0
     rotateWithCamera: 0
-    walkSpeed: 4
-    runningSpeed: 4
-    sprintSpeed: 6
+    walkSpeed: 3
+    runningSpeed: 6
+    sprintSpeed: 0
   strafeSpeed:
     movementSmooth: 6
     animationSmooth: 0.2
@@ -455,7 +457,7 @@ MonoBehaviour:
   jumpWithRigidbodyForce: 0
   jumpAndRotate: 1
   jumpTimer: 0.3
-  jumpHeight: 4
+  jumpHeight: 5
   airSpeed: 5
   airSmooth: 6
   extraGravity: -10
@@ -537,6 +539,7 @@ MonoBehaviour:
     m_Bits: 128
   hitboxShow: {fileID: 408810209}
   ManaPerHit: 10
+  vMovement: {fileID: 4425428723088313503}
 --- !u!114 &800293437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,12 +552,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e943e2a9d4e140d4b8f32d6021ed87dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plr: {fileID: 4425428723088313499}
+  plrCenter: {fileID: 2483260668572973891}
   _hitboxShow: {fileID: 408810209}
   spells:
   - {fileID: 11400000, guid: f092b2b294d819549a83a0c7f62a9f96, type: 2}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &3683135857381765439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425428723088313499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f8ef27ed2ca3d4c9b8c05ef8c5f401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7859034333990321711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425428723088313499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9169d9496c0fbe646a336676a5cf05b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealCount: 10
+  HealTime: 1.5
+  HPPerHeal: 10
+  playerHP: {fileID: 3683135857381765439}
 --- !u!1 &4425428723094576442
 GameObject:
   m_ObjectHideFlags: 0

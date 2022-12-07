@@ -5,7 +5,7 @@ using UnityEngine;
 public class ManaHandler : MonoCache
 {
     private static int mana = 0;
-    public GameObject plr;
+    public Transform plrCenter;
     public HitboxShow _hitboxShow;
     public Spell[] spells = new Spell[3];
     private KeyCode[] KeyCodes = new KeyCode[] {KeyCode.E, KeyCode.R, KeyCode.T};
@@ -42,7 +42,7 @@ public class ManaHandler : MonoCache
             if (Input.GetKeyDown(KeyCodes[i]) && spells[i] != null && mana > spells[i].manaCost)
             {
                 Spell spell = spells[i];
-                spell.Activate(this,_hitboxShow);
+                spell.Activate(this,_hitboxShow, plrCenter);
                 Mana -= spell.manaCost;
                 
                 

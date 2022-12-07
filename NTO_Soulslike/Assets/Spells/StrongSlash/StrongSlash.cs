@@ -8,16 +8,15 @@ public class StrongSlash : Spell
     public float RangeMultiplier;
     public LayerMask WhatIsEnemies;
 
-    public override void Activate(ManaHandler manaHandler, HitboxShow hitboxShow)
+    public override void Activate(ManaHandler manaHandler, HitboxShow hitboxShow, Transform plrCenter)
     {
         Weapon _weapon = manaHandler.GetComponent<WeaponHolder>()._weapon;
-        Transform plr = manaHandler.GetComponent<Transform>();
-        Transform hitboxCenter = plr.GetChild(2).GetComponent<Transform>();
+        
         
         
         float Range = _weapon.weaponRange * RangeMultiplier;
-        Collider[] Enemies = Physics.OverlapBox(hitboxCenter.position - hitboxCenter.forward * Range/2, new Vector3(1,2,Range), hitboxCenter.rotation, WhatIsEnemies);
-        hitboxShow.BoxShow(hitboxCenter.position - hitboxCenter.forward * Range / 2, new Vector3(1, 2, Range), hitboxCenter.rotation);
+        Collider[] Enemies = Physics.OverlapBox(plrCenter.position + plrCenter.forward * Range/2, new Vector3(1,2,Range), plrCenter.rotation, WhatIsEnemies);
+        hitboxShow.BoxShow(plrCenter.position + plrCenter.forward * Range / 2, new Vector3(1, 2, Range), plrCenter.rotation);
         Debug.Log("Spell!");
 
         foreach (Collider enemy in Enemies)

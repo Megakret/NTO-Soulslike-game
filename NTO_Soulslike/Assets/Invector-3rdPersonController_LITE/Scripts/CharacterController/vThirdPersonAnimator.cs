@@ -1,8 +1,8 @@
 ﻿
 using UnityEngine;
 
-namespace Invector.vCharacterController
-{
+
+
     public class vThirdPersonAnimator : vThirdPersonMotor
     {
         #region Variables                
@@ -60,4 +60,3 @@ namespace Invector.vCharacterController
         public static int IsSprinting = Animator.StringToHash("IsSprinting");
         public static int GroundDistance = Animator.StringToHash("GroundDistance");
     }
-}

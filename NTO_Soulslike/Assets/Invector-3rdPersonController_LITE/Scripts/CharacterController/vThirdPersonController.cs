@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-namespace Invector.vCharacterController
-{
+
+
     public class vThirdPersonController : vThirdPersonAnimator
     {
         public virtual void ControlAnimatorRootMotion()
@@ -125,4 +125,3 @@ namespace Invector.vCharacterController
                 animator.CrossFadeInFixedTime("JumpMove", .2f);
         }
     }
-}
