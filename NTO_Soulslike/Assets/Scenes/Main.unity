@@ -937,7 +937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1011411686
 Transform:
   m_ObjectHideFlags: 0
@@ -1064,6 +1064,7 @@ GameObject:
   - component: {fileID: 1325614800}
   - component: {fileID: 1325614799}
   - component: {fileID: 1325614802}
+  - component: {fileID: 1325614803}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1272,6 +1273,21 @@ MonoBehaviour:
   personController: {fileID: 1325614800}
   DodgeSpeed: 10
   DodgeTime: 0.5
+  DodgeCd: 1
+--- !u!114 &1325614803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325614790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dda6d185b559944bf5c6d96add7fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parryWindow: 0.8
+  StunTime: 1.5
 --- !u!1 &1619172512
 GameObject:
   m_ObjectHideFlags: 3

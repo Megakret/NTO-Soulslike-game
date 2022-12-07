@@ -14,9 +14,10 @@ public class WeaponHolder : MonoCache
     public int ManaPerHit;
     [Header("Controller")]
     public ThirdPersonController personController;
-    
-    
-    
+
+
+
+    private Transform CameraPos;
     private float comboNum = 0; 
     private float prevTick;
     private bool CanHit = true;
@@ -24,20 +25,20 @@ public class WeaponHolder : MonoCache
     void Start()
     {
         prevTick = Time.time;
-        
+        CameraPos = Camera.main.transform; // Получаем трансформ камеры
         
     }
 
     // Update is called once per frame
     public override void OnTick()
     {
-        if (Input.GetButtonDown("Fire1") && CanHit && (PlayerStates.currentState == PlayerStates.States.Idle))
+        if (Input.GetButtonDown("Fire1") && CanHit && (PlayerStates.currentState == PlayerStates.States.Idle)) // Проверка может ли игрок атаковать
         {
             Click();
             PlayerStates.currentState = PlayerStates.States.Attack;
             
         }
-        Debug.Log(PlayerStates.currentState);
+        //Debug.Log(PlayerStates.currentState);
     }
     public void Click() // Удар
     {
@@ -60,7 +61,7 @@ public class WeaponHolder : MonoCache
             comboNum = 0;
 
         }
-        else
+        else // Обычная атака
         {
             
             StartCoroutine(HitCd());
@@ -68,9 +69,9 @@ public class WeaponHolder : MonoCache
             
         }
 
-        Debug.Log("Hit");
+        //Debug.Log("Hit");
         
-        StartCoroutine(PlayerStates.ChangeState(_weapon.hitCd,PlayerStates.States.Idle));
+        StartCoroutine(PlayerStates.ChangeState(_weapon.hitCd,PlayerStates.States.Idle)); //Сменя состояния на обычное через несколько секунд
         CanHit = false;
         prevTick = Time.time;
 
@@ -86,7 +87,12 @@ public class WeaponHolder : MonoCache
     {
         
         Collider[] Enemies = Physics.OverlapBox(hitboxCenter.position +  hitboxCenter.forward * _weapon.weaponRange / 2, new Vector3(1, 2, _weapon.weaponRange), hitboxCenter.rotation, WhatIsEnemies);
+       
+            //Показать хитбокс удара
         hitboxShow.BoxShow(hitboxCenter.position + hitboxCenter.forward * _weapon.weaponRange / 2, new Vector3(1, 2, _weapon.weaponRange), hitboxCenter.rotation);
+        
+        
+        // Нанести урон врагам попавшим под удар и дать ману за каждого задетого врага
         foreach (Collider enemy in Enemies) {
             enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
             ManaHandler.Mana += _weapon.ManaPerHit;

@@ -8,6 +8,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         HP -= damage;
-        Debug.Log(HP);
+        //Debug.Log(HP);
     }
 }

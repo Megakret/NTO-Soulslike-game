@@ -18,7 +18,7 @@ public class PlayerStates : MonoBehaviour
         Stunned,
         Healing
     }
-    public static IEnumerator ChangeState(float duration, States state)
+    public static IEnumerator ChangeState(float duration, States state) //—мена состо€ни€ игрока через некоторое врем€
     {
        if(prevDuration - tick < duration)
        {

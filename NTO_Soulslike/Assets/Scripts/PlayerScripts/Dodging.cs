@@ -10,32 +10,42 @@ public class Dodging : MonoCache
 
     public float DodgeSpeed;
     public float DodgeTime;
-    
+    public float DodgeCd;
+    private bool CanDodge;
     
     public override void OnTick()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && PlayerStates.currentState == PlayerStates.States.Idle)
+        if (Input.GetKeyDown(KeyCode.Q) && PlayerStates.currentState == PlayerStates.States.Idle && CanDodge) // Может ли игрок сделать рывок
         {
-            StartCoroutine(Dodge());
-            PlayerStates.currentState = PlayerStates.States.Dodge;
-            PlayerStates.IFrame = true;
-            StartCoroutine(PlayerStates.ChangeState(DodgeTime, PlayerStates.States.Idle));
+            CanDodge = false; // Выключает игроку возможность делать рывок
+            PlayerStates.currentState = PlayerStates.States.Dodge; // Дает игроку состояния рывок
+            PlayerStates.IFrame = true; // Выдать игроку неуязвимость
+            StartCoroutine(Dodge()); // Сам рывок
+            StartCoroutine(DodgeCdCount()); // Вернуть возможность делать рывок через некоторое время
+            StartCoroutine(PlayerStates.ChangeState(DodgeTime, PlayerStates.States.Idle));// Возвращает состояние покоя
 
         }
     }
     private IEnumerator Dodge()
     {
+
         float StartTime = Time.time;
-        while (Time.time < StartTime + DodgeTime)
+        while (Time.time < StartTime + DodgeTime) // Отсчет до конца рывка
         {
             yield return null;
             controller.Move(personController.movDir.normalized * DodgeSpeed * Time.deltaTime);
-            Debug.Log(personController.movDir.normalized);
+            
 
         }
         PlayerStates.IFrame = false;
 
         yield break;
         
+    }
+    private IEnumerator DodgeCdCount() // Дают игроку возможность делать рывок через некоторое время
+    {
+        yield return new WaitForSeconds(DodgeCd);
+        CanDodge = true;
+        yield break;
     }
 }

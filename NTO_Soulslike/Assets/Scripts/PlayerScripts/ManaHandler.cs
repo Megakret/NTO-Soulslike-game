@@ -27,7 +27,7 @@ public class ManaHandler : MonoCache
             else
             {
                 mana = value; 
-                Debug.Log($"Mana is: {mana}");
+                //Debug.Log($"Mana is: {mana}");
             }
             // «десь можно прописать код дл€ изменени€ шкалы маны.
             
