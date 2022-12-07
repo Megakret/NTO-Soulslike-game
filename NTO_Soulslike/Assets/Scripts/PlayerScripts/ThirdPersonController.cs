@@ -13,6 +13,9 @@ public class ThirdPersonController : MonoCache
     public float ChangingSpeed;
     [Header("Turning")]
     public float TurnSmooth;
+    //Направление движения игрока
+    public Vector3 movDir;
+    //Остальное
     float TurnSmoothVel;
     private Transform CameraPos;
     private float currentTick;
@@ -33,7 +36,7 @@ public class ThirdPersonController : MonoCache
             currentTick += Time.deltaTime;
             float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + CameraPos.eulerAngles.y;
             float Angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetAngle, ref TurnSmoothVel,TurnSmooth);
-            Vector3 movDir = Quaternion.Euler(0f, Angle, 0f) * Vector3.forward;
+            movDir = Quaternion.Euler(0f, Angle, 0f) * Vector3.forward;
             transform.rotation = Quaternion.Euler(0f, Angle, 0);
             controller.Move(movDir.normalized * speed * Time.deltaTime);
             if(currentTick >= FromWalkToRunTime)
@@ -60,6 +63,11 @@ public class ThirdPersonController : MonoCache
     public void SlowDown()
     {
         speed = WalkSpeed;
+        currentTick = 0;
+    }
+    public void MaxSpeed()
+    {
+        speed = runSpeed;
         currentTick = 0;
     }
     

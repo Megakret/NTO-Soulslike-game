@@ -382,7 +382,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763551900}
-  m_LocalRotation: {x: 0.14154656, y: 0.52248585, z: -0.08844816, w: 0.83615196}
+  m_LocalRotation: {x: 0.14154656, y: 0.52248573, z: -0.08844813, w: 0.836152}
   m_LocalPosition: {x: 19.410889, y: 3.2800002, z: 5.724523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1036,7 +1036,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075374332}
-  m_LocalRotation: {x: 0.14154656, y: 0.52248585, z: -0.08844812, w: 0.83615196}
+  m_LocalRotation: {x: 0.14154658, y: 0.5224858, z: -0.08844813, w: 0.83615196}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1063,6 +1063,7 @@ GameObject:
   - component: {fileID: 1325614792}
   - component: {fileID: 1325614800}
   - component: {fileID: 1325614799}
+  - component: {fileID: 1325614802}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1254,6 +1255,23 @@ MonoBehaviour:
   FromWalkToRunTime: 1.5
   ChangingSpeed: 5
   TurnSmooth: 0.2
+  movDir: {x: 0, y: 0, z: 0}
+--- !u!114 &1325614802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325614790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f563fd1aa4a05f24d99a4421033f2621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1325614799}
+  personController: {fileID: 1325614800}
+  DodgeSpeed: 10
+  DodgeTime: 0.5
 --- !u!1 &1619172512
 GameObject:
   m_ObjectHideFlags: 3
