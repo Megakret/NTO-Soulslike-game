@@ -113,7 +113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1351231574011435007
 Transform:
   m_ObjectHideFlags: 0
@@ -350,10 +350,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9169d9496c0fbe646a336676a5cf05b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealCount: 10
+  healCount: 0
   HealTime: 1.5
-  HPPerHeal: 10
+  HPPerHeal: 50
   playerHP: {fileID: 1351231575340481488}
+  text: {fileID: 0}
 --- !u!114 &1351231575340481481
 MonoBehaviour:
   m_ObjectHideFlags: 0
