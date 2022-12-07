@@ -8,11 +8,13 @@ public class ManaHandler : MonoCache
     public Transform plrCenter;
     public HitboxShow _hitboxShow;
     public Spell[] spells = new Spell[3];
+    public Bar ManaBar;
+    public int MaxMana;
     private KeyCode[] KeyCodes = new KeyCode[] {KeyCode.E, KeyCode.R, KeyCode.T};
 
     
 
-    public static int Mana
+    public int Mana
     {
         get
         {
@@ -22,7 +24,7 @@ public class ManaHandler : MonoCache
         {
             if(value > 100)
             {
-                mana = 100;
+                mana = MaxMana;
             }
             else
             {
@@ -30,6 +32,7 @@ public class ManaHandler : MonoCache
                 //Debug.Log($"Mana is: {mana}");
             }
             // «десь можно прописать код дл€ изменени€ шкалы маны.
+            ManaBar.ChangeSlider((double)mana/MaxMana);
             
         }
     }

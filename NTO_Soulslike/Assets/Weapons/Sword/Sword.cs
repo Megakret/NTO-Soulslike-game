@@ -9,12 +9,13 @@ public class Sword : Weapon
     {
         //Debug.Log("Final Hit");
         Collider[] Enemies = Physics.OverlapSphere(weaponManager.gameObject.transform.position, SpecialRadius, weaponManager.WhatIsEnemies);
+        ManaHandler manaHandler = weaponManager.GetComponent<ManaHandler>();
         hitboxShow.SphereShow(weaponManager.gameObject.transform.position, SpecialRadius);
         foreach (Collider enemy in Enemies)
         {
             
             enemy.GetComponent<Enemy>().TakeDamage(10);
-            ManaHandler.Mana += ManaPerHit;
+            manaHandler.Mana += ManaPerHit;
 
         }
 

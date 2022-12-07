@@ -12,6 +12,7 @@ public class WeaponHolder : MonoCache
     public HitboxShow hitboxShow;
     [Header("Mana")]
     public int ManaPerHit;
+    public ManaHandler manaHandler;
     [Header("Controller")]
     public ThirdPersonController personController;
 
@@ -97,7 +98,7 @@ public class WeaponHolder : MonoCache
         // Нанести урон врагам попавшим под удар и дать ману за каждого задетого врага
         foreach (Collider enemy in Enemies) {
             enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
-            ManaHandler.Mana += _weapon.ManaPerHit;
+            manaHandler.Mana += _weapon.ManaPerHit;
         }
 
     }

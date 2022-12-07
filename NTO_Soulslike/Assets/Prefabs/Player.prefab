@@ -302,6 +302,7 @@ MonoBehaviour:
     m_Bits: 128
   hitboxShow: {fileID: 1351231574011435006}
   ManaPerHit: 10
+  manaHandler: {fileID: 1351231575340481491}
   personController: {fileID: 1351231575340481481}
 --- !u!114 &1351231575340481491
 MonoBehaviour:
@@ -321,6 +322,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f092b2b294d819549a83a0c7f62a9f96, type: 2}
   - {fileID: 0}
   - {fileID: 0}
+  ManaBar: {fileID: 0}
+  MaxMana: 100
 --- !u!114 &1351231575340481488
 MonoBehaviour:
   m_ObjectHideFlags: 0
