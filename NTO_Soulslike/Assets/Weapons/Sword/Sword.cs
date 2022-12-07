@@ -7,7 +7,7 @@ public class Sword : Weapon
     public float SpecialRadius;
     public override void SpecialAbility(WeaponHolder weaponManager, HitboxShow hitboxShow) // Здесь код особенной способки на 3 ударе
     {
-        Debug.Log("Final Hit");
+        //Debug.Log("Final Hit");
         Collider[] Enemies = Physics.OverlapSphere(weaponManager.gameObject.transform.position, SpecialRadius, weaponManager.WhatIsEnemies);
         hitboxShow.SphereShow(weaponManager.gameObject.transform.position, SpecialRadius);
         foreach (Collider enemy in Enemies)

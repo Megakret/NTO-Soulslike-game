@@ -17,6 +17,6 @@ MonoBehaviour:
   ManaPerHit: 10
   hitCd: 0.4
   afterComboCd: 1
-  weaponRange: 1
+  weaponRange: 3
   maxComboDelay: 1.5
-  SpecialRadius: 3
+  SpecialRadius: 5
