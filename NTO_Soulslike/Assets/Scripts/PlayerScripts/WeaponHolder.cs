@@ -12,6 +12,8 @@ public class WeaponHolder : MonoCache
     public HitboxShow hitboxShow;
     [Header("Mana")]
     public int ManaPerHit;
+    [Header("Controller")]
+    public ThirdPersonController personController;
     
     
     
@@ -29,11 +31,13 @@ public class WeaponHolder : MonoCache
     // Update is called once per frame
     public override void OnTick()
     {
-        if (Input.GetButtonDown("Fire1") && CanHit)
+        if (Input.GetButtonDown("Fire1") && CanHit && (PlayerStates.currentState == PlayerStates.States.Idle))
         {
             Click();
+            PlayerStates.currentState = PlayerStates.States.Attack;
             
         }
+        Debug.Log(PlayerStates.currentState);
     }
     public void Click() // Удар
     {
@@ -65,7 +69,8 @@ public class WeaponHolder : MonoCache
         }
 
         Debug.Log("Hit");
-        
+        personController.SlowDown();
+        StartCoroutine(ToIdle());
         CanHit = false;
         prevTick = Time.time;
 
@@ -95,7 +100,12 @@ public class WeaponHolder : MonoCache
     {
         yield return new WaitForSeconds(_weapon.hitCd);
         CanHit = true;
-        
+        yield break;
+    }
+    private IEnumerator ToIdle()
+    {
+        yield return new WaitForSeconds(_weapon.hitCd);
+        PlayerStates.currentState = PlayerStates.States.Idle;
         yield break;
     }
     private IEnumerator AfterComboCd() // кд после последнего удара в комбо

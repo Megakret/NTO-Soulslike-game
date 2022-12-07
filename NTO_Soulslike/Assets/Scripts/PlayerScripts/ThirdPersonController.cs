@@ -28,7 +28,7 @@ public class ThirdPersonController : MonoCache
         float XVel = Input.GetAxisRaw("Horizontal");
         float ZVel = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(XVel, 0, ZVel).normalized;
-        if(direction.magnitude >= 0.1f)
+        if(direction.magnitude >= 0.1f && (PlayerStates.currentState == PlayerStates.States.Idle || PlayerStates.currentState == PlayerStates.States.Attack))
         {
             currentTick += Time.deltaTime;
             float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + CameraPos.eulerAngles.y;
@@ -62,6 +62,7 @@ public class ThirdPersonController : MonoCache
         speed = WalkSpeed;
         currentTick = 0;
     }
+    
     
     
 

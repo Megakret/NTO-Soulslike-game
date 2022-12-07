@@ -21,20 +21,27 @@ public class Healing : MonoCache
     public override void OnTick()
     {
         
-        if (Input.GetKey(KeyCode.H) && CanHeal && HealCount > 0)
+        if (Input.GetKey(KeyCode.H) && CanHeal && HealCount > 0 && (PlayerStates.currentState == PlayerStates.States.Idle || PlayerStates.currentState == PlayerStates.States.Healing))
         {
             Heal();
+            PlayerStates.currentState = PlayerStates.States.Healing;
             
         }
         else
         {
+            
             TickTime = 0;
+            if(PlayerStates.currentState == PlayerStates.States.Healing)
+            {
+                PlayerStates.currentState = PlayerStates.States.Idle;
+            }
         }
 
     }
     private void Heal()
     {
         TickTime += Time.deltaTime;
+        Debug.Log("Healing");
         if (TickTime >= HealTime)
         {
             playerHP.HP += HPPerHeal;
