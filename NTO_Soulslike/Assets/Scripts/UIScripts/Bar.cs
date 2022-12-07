@@ -15,14 +15,23 @@ public class Bar : MonoBehaviour
     private IEnumerator ChangingSlider(double EndValue)
     {
         double _EndValue = Math.Round(EndValue,2);
-        double value = Math.Round(slider.value,2);
-        while(value != _EndValue)
+        double value = Math.Round(slider.value, 2);
+        float Increase;
+        if (value < EndValue)
+        {
+            Increase = 0.01f;
+        }
+        else
+        {
+            Increase = -0.01f;
+        }
+        while (value != _EndValue)
         {
             Debug.Log(value);
             Debug.Log(_EndValue);
             yield return null;
             
-            value -= 0.01f;
+            value += Increase;
             value = Math.Round(value, 2);
             slider.value = (float)value;
             Fill.color = gradient.Evaluate((float)value);
