@@ -1248,7 +1248,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1325614799}
-  speed: 3
+  WalkSpeed: 3
+  runSpeed: 10
+  FromWalkToRunTime: 3
+  ChangingSpeed: 5
   TurnSmooth: 0.2
 --- !u!1 &1619172512
 GameObject:
