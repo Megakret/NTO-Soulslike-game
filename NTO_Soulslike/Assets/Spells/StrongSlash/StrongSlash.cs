@@ -10,12 +10,12 @@ public class StrongSlash : Spell
 
     public override void Activate(ManaHandler manaHandler, HitboxShow hitboxShow, Transform plrCenter)
     {
+        Transform CameraPos = Camera.main.transform;
         Weapon _weapon = manaHandler.GetComponent<WeaponHolder>()._weapon; // Получить свойства оружия
         float Range = _weapon.weaponRange * RangeMultiplier; // Вычислить дальность заклинания
         Collider[] Enemies = Physics.OverlapBox(plrCenter.position + plrCenter.forward * Range/2, new Vector3(1,2,Range), plrCenter.rotation, WhatIsEnemies); // Создать хитбокс
-        
-            hitboxShow.BoxShow(plrCenter.position + plrCenter.forward * Range / 2, new Vector3(1, 2, Range), plrCenter.rotation);
-        
+        hitboxShow.BoxShow(plrCenter.position + plrCenter.forward * Range / 2, new Vector3(1, 2, Range), plrCenter.rotation);
+        plrCenter.parent.rotation = Quaternion.Euler(0,CameraPos.eulerAngles.y,0);
         
         //Debug.Log("Spell!");
 

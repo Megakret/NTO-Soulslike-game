@@ -43,9 +43,9 @@ public class WeaponHolder : MonoCache
     public void Click() // Удар
     {
         float nowTick = Time.time;
-        
-        
-        if(nowTick - prevTick >= _weapon.maxComboDelay) // Сброс комбо, если игрок не атаковал слишком долго
+
+        transform.rotation = Quaternion.Euler(0, CameraPos.eulerAngles.y, 0);
+        if (nowTick - prevTick >= _weapon.maxComboDelay) // Сброс комбо, если игрок не атаковал слишком долго
         {
             comboNum = 0;
             prevTick = Time.time;
@@ -74,6 +74,8 @@ public class WeaponHolder : MonoCache
         StartCoroutine(PlayerStates.ChangeState(_weapon.hitCd,PlayerStates.States.Idle)); //Сменя состояния на обычное через несколько секунд
         CanHit = false;
         prevTick = Time.time;
+        // Поворот игрока в сторону камеры
+        
 
         
         

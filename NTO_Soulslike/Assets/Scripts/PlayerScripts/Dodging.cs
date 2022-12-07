@@ -11,7 +11,8 @@ public class Dodging : MonoCache
     public float DodgeSpeed;
     public float DodgeTime;
     public float DodgeCd;
-    private bool CanDodge;
+    public float IFramesTime;
+    private bool CanDodge = true;
     
     public override void OnTick()
     {
@@ -23,7 +24,7 @@ public class Dodging : MonoCache
             StartCoroutine(Dodge()); // Сам рывок
             StartCoroutine(DodgeCdCount()); // Вернуть возможность делать рывок через некоторое время
             StartCoroutine(PlayerStates.ChangeState(DodgeTime, PlayerStates.States.Idle));// Возвращает состояние покоя
-
+            StartCoroutine(IFrameCd());
         }
     }
     private IEnumerator Dodge()
@@ -37,7 +38,7 @@ public class Dodging : MonoCache
             
 
         }
-        PlayerStates.IFrame = false;
+        
 
         yield break;
         
@@ -46,6 +47,12 @@ public class Dodging : MonoCache
     {
         yield return new WaitForSeconds(DodgeCd);
         CanDodge = true;
+        yield break;
+    }
+    private IEnumerator IFrameCd()
+    {
+        yield return new WaitForSeconds(IFramesTime);
+        PlayerStates.IFrame = false;
         yield break;
     }
 }
