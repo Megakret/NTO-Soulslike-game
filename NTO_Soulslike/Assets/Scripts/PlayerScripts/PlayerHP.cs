@@ -8,6 +8,7 @@ public class PlayerHP : MonoCache
     public int MaxHP;
     public Bar HealthBar;
     public GameObject PancakePrefab;
+    public Vector3 SpawnPoint;
     public int HP
     {
         get
@@ -55,7 +56,7 @@ public class PlayerHP : MonoCache
         pancakeBrain.PancakeCount = healing.HealCount;
         healing.HealCount = 0;
         HP = 100;
-        gameObject.transform.position = new Vector3(26, 0, 1);
+        gameObject.transform.position = SpawnPoint;
         
 
 
