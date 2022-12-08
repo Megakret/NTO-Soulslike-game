@@ -37,7 +37,7 @@ public class Healing : MonoCache
     }
     private void Awake()
     {
-        HealCount = 10;
+        HealCount = 0;
         CanHeal = true;
     }
     public override void OnTick()
