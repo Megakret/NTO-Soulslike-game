@@ -21,20 +21,20 @@ public class Dodging : MonoCache
             CanDodge = false; // Выключает игроку возможность делать рывок
             PlayerStates.currentState = PlayerStates.States.Dodge; // Дает игроку состояния рывок
             PlayerStates.IFrame = true; // Выдать игроку неуязвимость
-            StartCoroutine(Dodge()); // Сам рывок
+            StartCoroutine(Dodge(DodgeSpeed, DodgeTime)); // Сам рывок
             StartCoroutine(DodgeCdCount()); // Вернуть возможность делать рывок через некоторое время
             StartCoroutine(PlayerStates.ChangeState(DodgeTime, PlayerStates.States.Idle));// Возвращает состояние покоя
             StartCoroutine(IFrameCd());
         }
     }
-    private IEnumerator Dodge()
+    public IEnumerator Dodge(float DodgeSpeed, float DodgeTime)
     {
 
         float StartTime = Time.time;
         while (Time.time < StartTime + DodgeTime) // Отсчет до конца рывка
         {
             yield return null;
-            controller.Move(personController.movDir.normalized * DodgeSpeed * Time.deltaTime);
+            controller.Move(Quaternion.Euler(0,gameObject.transform.eulerAngles.y,0) * Vector3.forward * DodgeSpeed * Time.deltaTime);
             
 
         }
