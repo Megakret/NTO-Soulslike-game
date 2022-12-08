@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Interactable : MonoBehaviour
+public class Interactable : MonoCache
 {
     public GameObject canvas;
     public void Near()
@@ -16,5 +16,9 @@ public class Interactable : MonoBehaviour
     public virtual void Interacting(GameObject plr)
     {
         Debug.Log("Interact");
+    }
+    public override void OnTick()
+    {
+        canvas.transform.LookAt(Camera.main.transform);
     }
 }

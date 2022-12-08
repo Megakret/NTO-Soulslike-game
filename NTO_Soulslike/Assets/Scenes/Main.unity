@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10246341, g: 0.038329132, b: 0.7169812, a: 1}
+  m_Color: {r: 0.10246341, g: 0.038329132, b: 0.517, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31273818, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.32616678, g: 0.7735849, b: 0.1216328, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -706,7 +706,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: a7505d084899ed944bd6fea1dd9c29ae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -841,7 +841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_AnchorMin.x
@@ -849,11 +849,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 620
+      value: 686
       objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_SizeDelta.y
@@ -893,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 167
       objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1333,7 +1333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 157.3, y: -43.591}
+  m_AnchoredPosition: {x: 157.30005, y: -43.590942}
   m_SizeDelta: {x: 183.3364, y: 12.8174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603234732
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   gradient:
     serializedVersion: 2
     key0: {r: 0.0232585, g: 0.5916544, b: 0.9245283, a: 1}
-    key1: {r: 0.10980393, g: 0.050980397, b: 0.7176471, a: 1}
+    key1: {r: 0.10196079, g: 0.043137256, b: 0.4901961, a: 1}
     key2: {r: 0.31764707, g: 0.9921569, b: 0.06666667, a: 1}
     key3: {r: 0, g: 0, b: 0, a: 1}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1360,7 +1360,7 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 48188
+    ctime1: 65535
     ctime2: 65535
     ctime3: 0
     ctime4: 0
@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1824,7 +1824,7 @@ MonoBehaviour:
     serializedVersion: 2
     key0: {r: 0.9528302, g: 0.06891531, b: 0.06891531, a: 1}
     key1: {r: 0.9150943, g: 0.88377887, b: 0.023021169, a: 1}
-    key2: {r: 0.31764707, g: 0.9921569, b: 0.06666667, a: 1}
+    key2: {r: 0.30588236, g: 0.73333335, b: 0.10196079, a: 1}
     key3: {r: 0, g: 0, b: 0, a: 1}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -2019,7 +2019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: a7505d084899ed944bd6fea1dd9c29ae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

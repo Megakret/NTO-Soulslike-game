@@ -18,6 +18,10 @@ public class Interact : MonoCache
     {
         if (other.gameObject.tag == "Interactable")
         {
+            if (interactable)
+            {
+                interactable.Far();
+            }
             interactable = other.gameObject.GetComponent<Interactable>();
             interactable.Near();
             CanInteract = true;
@@ -29,9 +33,13 @@ public class Interact : MonoCache
     {
         if (other.gameObject.tag == "Interactable")
         {
-            interactable.Far();
-            interactable = null;
-            CanInteract = false;
+            if (interactable)
+            {
+                interactable.Far();
+                interactable = null;
+                CanInteract = false;
+            }
+            
         }
     }
     public virtual void Interacting()
