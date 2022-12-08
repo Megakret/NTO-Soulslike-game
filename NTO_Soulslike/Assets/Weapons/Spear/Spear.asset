@@ -19,7 +19,9 @@ MonoBehaviour:
   afterComboCd: 1.5
   weaponRange: 6
   maxComboDelay: 1.5
-  UltimateRange: 20
+
+  UltimateRange: 15
+
   dashTime: 1
   dashSpeed: 10
   UltimateDamage: 10

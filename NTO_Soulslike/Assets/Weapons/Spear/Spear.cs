@@ -12,7 +12,11 @@ public class Spear : Weapon
     public override void SpecialAbility(WeaponHolder weaponManager, HitboxShow hitboxShow)
     {
         
-        Collider[] Enemies = Physics.OverlapBox(weaponManager.gameObject.transform.position + weaponManager.transform.forward * UltimateRange/2,new Vector3(3,3,UltimateRange/2), weaponManager.transform.rotation,weaponManager.WhatIsEnemies);
+
+        Collider[] Enemies = Physics.OverlapBox(weaponManager.gameObject.transform.position + weaponManager.transform.forward * UltimateRange/2,new Vector3(2,3,UltimateRange/2), weaponManager.transform.rotation,weaponManager.WhatIsEnemies);
+
+        
+
         hitboxShow.BoxShow(weaponManager.gameObject.transform.position + weaponManager.transform.forward * UltimateRange / 2, new Vector3(3, 3, UltimateRange), weaponManager.transform.rotation);
         ManaHandler manaHandler = weaponManager.GetComponent<ManaHandler>();
         
@@ -26,8 +30,7 @@ public class Spear : Weapon
         Dodging dashManager = weaponManager.GetComponent<Dodging>();
         
         dashManager.StartCoroutine(dashManager.Dodge(dashSpeed,dashTime));
-        PlayerStates.currentState = PlayerStates.States.Dodge;
-        PlayerStates.ChangeState(dashTime, PlayerStates.States.Idle);
+
         
     }
     
