@@ -1,18 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using System;
 public class Healing : MonoCache
 {
-    public int HealCount;
+    public int healCount;
     [Header("Healing Properties")]
     public float HealTime;
     public int HPPerHeal;
     public PlayerHP playerHP;
-   
+    [Header("PancakeUI")]
+    public Text text;
     private float TickTime;
     private bool CanHeal;
+    public int HealCount
+    {
+        get
+        {
+            return healCount;
+        }
+        set
+        {
+            if(value >= 10)
+            {
+                healCount = 10;
+            }
+            else
+            {
+                healCount = value;
+                
+            }
+            text.text = Convert.ToString(healCount);
 
+        }
+    }
     private void Awake()
     {
         HealCount = 10;
@@ -21,7 +43,7 @@ public class Healing : MonoCache
     public override void OnTick()
     {
         
-        if (Input.GetKey(KeyCode.H) && CanHeal && HealCount > 0 && (PlayerStates.currentState == PlayerStates.States.Idle || PlayerStates.currentState == PlayerStates.States.Healing))
+        if (Input.GetKey(KeyCode.H) && CanHeal && healCount > 0 && (PlayerStates.currentState == PlayerStates.States.Idle || PlayerStates.currentState == PlayerStates.States.Healing))
         {
             Heal();
             PlayerStates.currentState = PlayerStates.States.Healing;
