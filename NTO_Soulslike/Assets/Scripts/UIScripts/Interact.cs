@@ -1,33 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DialogueEditor;
 public class Interact : MonoCache
 {
     public bool CanInteract = false;
-    public DialogueEditor.NPCConversation conversation;
+    public Interactable interactable;
+    
     public override void OnTick()
     {
         if (Input.GetKeyDown(KeyCode.F) && CanInteract)
         {
-            DialogueEditor.ConversationManager.Instance.StartConversation(conversation);
-            PlayerStates.currentState = PlayerStates.States.Stunned;
+            interactable.Interacting();
         }
     }
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Dialogue")
+        if (other.gameObject.tag == "Interactable")
         {
-            Cursor.lockState = CursorLockMode.None;
-            conversation = other.gameObject.GetComponent<DialogueEditor.NPCConversation>();
+            interactable = other.gameObject.GetComponent<Interactable>();
+            interactable.Near();
             CanInteract = true;
         }
     }
+    
+
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Dialogue")
+        if (other.gameObject.tag == "Interactable")
         {
+            interactable.Far();
+            interactable = null;
             CanInteract = false;
         }
     }
+    public virtual void Interacting()
+    {
+
+    }
+    
 }
