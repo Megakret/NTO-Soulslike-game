@@ -16,14 +16,16 @@ public class Dodging : MonoCache
     
     public override void OnTick()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && PlayerStates.currentState == PlayerStates.States.Idle && CanDodge) // Может ли игрок сделать рывок
+        if (Input.GetKeyDown(KeyCode.Q) && PlayerStates.currentState == PlayerStates.States.Idle && CanDodge) // ГЊГ®Г¦ГҐГІ Г«ГЁ ГЁГЈГ°Г®ГЄ Г±Г¤ГҐГ«Г ГІГј Г°Г»ГўГ®ГЄ
         {
-            CanDodge = false; // Выключает игроку возможность делать рывок
-            PlayerStates.currentState = PlayerStates.States.Dodge; // Дает игроку состояния рывок
-            PlayerStates.IFrame = true; // Выдать игроку неуязвимость
-            StartCoroutine(Dodge(DodgeSpeed, DodgeTime)); // Сам рывок
-            StartCoroutine(DodgeCdCount()); // Вернуть возможность делать рывок через некоторое время
-            StartCoroutine(PlayerStates.ChangeState(DodgeTime, PlayerStates.States.Idle));// Возвращает состояние покоя
+            CanDodge = false; // Г‚Г»ГЄГ«ГѕГ·Г ГҐГІ ГЁГЈГ°Г®ГЄГі ГўГ®Г§Г¬Г®Г¦Г­Г®Г±ГІГј Г¤ГҐГ«Г ГІГј Г°Г»ГўГ®ГЄ
+            PlayerStates.currentState = PlayerStates.States.Dodge; // Г„Г ГҐГІ ГЁГЈГ°Г®ГЄГі Г±Г®Г±ГІГ®ГїГ­ГЁГї Г°Г»ГўГ®ГЄ
+            PlayerStates.IFrame = true; // Г‚Г»Г¤Г ГІГј ГЁГЈГ°Г®ГЄГі Г­ГҐГіГїГ§ГўГЁГ¬Г®Г±ГІГј
+
+            StartCoroutine(Dodge(DodgeSpeed, DodgeTime)); // Г‘Г Г¬ Г°Г»ГўГ®ГЄ
+
+            StartCoroutine(DodgeCdCount()); // Г‚ГҐГ°Г­ГіГІГј ГўГ®Г§Г¬Г®Г¦Г­Г®Г±ГІГј Г¤ГҐГ«Г ГІГј Г°Г»ГўГ®ГЄ Г·ГҐГ°ГҐГ§ Г­ГҐГЄГ®ГІГ®Г°Г®ГҐ ГўГ°ГҐГ¬Гї
+            StartCoroutine(PlayerStates.ChangeState(DodgeTime, PlayerStates.States.Idle));// Г‚Г®Г§ГўГ°Г Г№Г ГҐГІ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ ГЇГ®ГЄГ®Гї
             StartCoroutine(IFrameCd());
         }
     }
@@ -31,7 +33,7 @@ public class Dodging : MonoCache
     {
 
         float StartTime = Time.time;
-        while (Time.time < StartTime + DodgeTime) // Отсчет до конца рывка
+        while (Time.time < StartTime + DodgeTime) // ГЋГІГ±Г·ГҐГІ Г¤Г® ГЄГ®Г­Г¶Г  Г°Г»ГўГЄГ 
         {
             yield return null;
             controller.Move(Quaternion.Euler(0,gameObject.transform.eulerAngles.y,0) * Vector3.forward * DodgeSpeed * Time.deltaTime);
@@ -43,7 +45,7 @@ public class Dodging : MonoCache
         yield break;
         
     }
-    private IEnumerator DodgeCdCount() // Дают игроку возможность делать рывок через некоторое время
+    private IEnumerator DodgeCdCount() // Г„Г ГѕГІ ГЁГЈГ°Г®ГЄГі ГўГ®Г§Г¬Г®Г¦Г­Г®Г±ГІГј Г¤ГҐГ«Г ГІГј Г°Г»ГўГ®ГЄ Г·ГҐГ°ГҐГ§ Г­ГҐГЄГ®ГІГ®Г°Г®ГҐ ГўГ°ГҐГ¬Гї
     {
         yield return new WaitForSeconds(DodgeCd);
         CanDodge = true;

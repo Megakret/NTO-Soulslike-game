@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3f08316c84dd743918d92ff9a03faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 11400000, guid: d08df3377e15f9747a23fd26e894f351, type: 2}
+  _weapon: {fileID: 11400000, guid: e235d028b8907554eb085e42895ceb4b, type: 2}
   hitboxCenter: {fileID: 1351231574064371584}
   WhatIsEnemies:
     serializedVersion: 2
@@ -411,6 +411,7 @@ MonoBehaviour:
   DodgeTime: 0.5
   DodgeCd: 2
   IFramesTime: 1
+  dashDistance: 5
 --- !u!114 &1351231575340481482
 MonoBehaviour:
   m_ObjectHideFlags: 0
