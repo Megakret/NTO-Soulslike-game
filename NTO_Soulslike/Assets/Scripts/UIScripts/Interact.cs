@@ -11,7 +11,7 @@ public class Interact : MonoCache
     {
         if (Input.GetKeyDown(KeyCode.F) && CanInteract)
         {
-            interactable.Interacting();
+            interactable.Interacting(gameObject);
         }
     }
     public void OnTriggerEnter(Collider other)

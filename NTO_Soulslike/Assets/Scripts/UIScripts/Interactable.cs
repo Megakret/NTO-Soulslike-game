@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
     {
         canvas.SetActive(false);
     }
-    public virtual void Interacting()
+    public virtual void Interacting(GameObject plr)
     {
         Debug.Log("Interact");
     }
