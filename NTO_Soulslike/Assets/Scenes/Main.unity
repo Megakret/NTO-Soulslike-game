@@ -749,7 +749,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763551900}
-  m_LocalRotation: {x: 0.14154656, y: 0.52248585, z: -0.08844816, w: 0.83615196}
+  m_LocalRotation: {x: 0.14154656, y: 0.52248573, z: -0.08844813, w: 0.836152}
   m_LocalPosition: {x: 19.410889, y: 3.2800002, z: 5.724523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1806,10 +1806,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-
-  m_AnchoredPosition: {x: 150.8, y: -37.96}
-
-  m_SizeDelta: {x: 160.914, y: 11.165604}
+  m_AnchoredPosition: {x: 157.3, y: -43.591}
+  m_SizeDelta: {x: 183.3364, y: 12.8174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603234732
 MonoBehaviour:
@@ -2115,10 +2113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-
-  m_AnchoredPosition: {x: 150.79605, y: -26.79837}
-
-  m_SizeDelta: {x: 198.4405, y: 11.165604}
+  m_AnchoredPosition: {x: 167.5, y: -31.198}
+  m_SizeDelta: {x: 190.8507, y: 11.9676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909389264
 MonoBehaviour:
@@ -2612,15 +2608,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6103100485261289465, guid: 1eb3d1532a90d0b44a764ef9ac45533d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14154656
+      value: 0.14154658
       objectReference: {fileID: 0}
     - target: {fileID: 6103100485261289465, guid: 1eb3d1532a90d0b44a764ef9ac45533d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.52248585
+      value: 0.5224858
       objectReference: {fileID: 0}
     - target: {fileID: 6103100485261289465, guid: 1eb3d1532a90d0b44a764ef9ac45533d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.08844812
+      value: -0.08844813
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb3d1532a90d0b44a764ef9ac45533d, type: 3}
