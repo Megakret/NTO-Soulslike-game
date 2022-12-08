@@ -113,7 +113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1351231574011435007
 Transform:
   m_ObjectHideFlags: 0
@@ -339,6 +339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 100
   HealthBar: {fileID: 0}
+  PancakePrefab: {fileID: 7728090923798598030, guid: bb977b1f59d3a464eba9ef42c2abac46, type: 3}
+  SpawnPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &1351231575340481489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +413,6 @@ MonoBehaviour:
   DodgeTime: 0.5
   DodgeCd: 2
   IFramesTime: 1
-  dashDistance: 5
 --- !u!114 &1351231575340481482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parryWindow: 0.8
-  StunTime: 1.5
+  StunTime: 0.4
 --- !u!114 &1325614803
 MonoBehaviour:
   m_ObjectHideFlags: 0

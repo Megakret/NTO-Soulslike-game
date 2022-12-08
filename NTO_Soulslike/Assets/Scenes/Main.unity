@@ -2156,18 +2156,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1351231574011435004, guid: cbd80d80ef1983a41b52078f2c99e2a0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1351231575340481488, guid: cbd80d80ef1983a41b52078f2c99e2a0, type: 3}
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 1909389265}
-    - target: {fileID: 1351231575340481488, guid: cbd80d80ef1983a41b52078f2c99e2a0, type: 3}
-      propertyPath: PancakePrefab
-      value: 
-      objectReference: {fileID: 7728090923798598030, guid: bb977b1f59d3a464eba9ef42c2abac46, type: 3}
     - target: {fileID: 1351231575340481489, guid: cbd80d80ef1983a41b52078f2c99e2a0, type: 3}
       propertyPath: text
       value: 
