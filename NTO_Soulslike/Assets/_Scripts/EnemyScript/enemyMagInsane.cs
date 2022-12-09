@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyMagInsane : MonoBehaviour
+public class enemyMagInsane : Enemy // Это класс где хранятся хп мобов и функция для нанесения им урона
 {
     [SerializeField] float speed = 10;
 
@@ -27,7 +27,7 @@ public class enemyMagInsane : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void OnTick() // Замена методу Update(Так надо)
     {
         if(Vector3.Distance(transform.position, movePoints[RandInt].position) < positionPatrol && angry == false && stun == false)
         {
@@ -96,8 +96,23 @@ public class enemyMagInsane : MonoBehaviour
         yield return null;
     }
     void StunFinish() { stun = false; }
+    
     void GoBack()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoints[RandInt].position, speed * Time.deltaTime);
     }
+    
+    /*В первую очередь пропиши до конца логику ближнику. Сделай все как написано в дизайн документе. 
+     * Мои советы:
+     * Дай characterController мобу и двигай его через него, так он не будет проходить сквозь стену и сможет забираться в горку
+     * Статус игрока можешь посмотреть в классе PlayerStates туда записано парирует ли игрок, оглушен ли он, атакует, делает рывок или ничего из этого (Idle)
+     * Оружие с мечом лежит в папке weapons. Как воспользоваться свойствами оружия придумай сам(я предлагаю например использовать переменную afterComboCd для временных промежутков между ударами).
+     * Все таки я решил упростить тебе задачу лучше не давай возможность врагам делать комбо(так может даже играться лучше будет:)), чтобы потратить больше времени на гибрида или босса.
+     * Для того чтобы враг отходил от игрока можешь тупо отрицательную скорость поставить.
+     * Если вдруг понадобится назначить игроку оглушение используй функцию в классе Stun под названием GetStun(я туда спецэффект поставил, но он пока что должен вертется вокруг центра игрока)
+     
+     * В самую последнюю очередь можешь добавить NavMeshAgent для врага(это штука которая добавляет PathFinding). НО В САМУЮ ПОСЛЕДНЮЮ ОЧЕРЕДЬ!
+     * 
+     */
+     
 }
