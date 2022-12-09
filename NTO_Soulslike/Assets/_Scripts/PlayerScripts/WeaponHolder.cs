@@ -33,7 +33,7 @@ public class WeaponHolder : MonoCache
     // Update is called once per frame
     public override void OnTick()
     {
-        Debug.DrawRay(hitboxCenter.position, CameraPos.forward * 100, Color.black);
+        
         if (Input.GetButtonDown("Fire1") && CanHit && (PlayerStates.currentState == PlayerStates.States.Idle)) // Проверка может ли игрок атаковать
         {
             Click();
