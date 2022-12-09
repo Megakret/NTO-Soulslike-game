@@ -6,34 +6,35 @@ using UnityEngine.SceneManagement;
 
 public class Damage : MonoBehaviour
 {
-   
-    public static bool gameOver;
-    public Transform plrPos;
-    public static bool prok;
-    private float CorXP;
-    private float CorXM;
-    private float CorYP;
-    private float CorYM;
-    void Start()
-    {
-        
-        
-        prok = false;
-        CorXP = plrPos.position.x + 3f;
-        CorXM = plrPos.position.x - 3f;
-        CorYP = plrPos.position.y + 3f;
-        CorYM = plrPos.position.y - 3f;
 
+    public ran_dom random;
+    public Transform plrPos;
+    public bool prok;
+    public int DefaultValue;
+    public Transform Center;
+    public SphereCollider sphereCollider;
+    
+    void Start()
+    {  
+        prok = false;
     }
 
     // Update is called once per frame
-    void Update()
+    public void StartCurse(ManaHandler mana)
     {
         
-        if (gameOver)
-        {
-            SceneManager.LoadScene("Level");
-        }
+            prok = true;
+            StartCoroutine(Curse(mana));
+            random.Spawn();
+            Debug.Log("Curse");
+            
+        
+    }
+    
+    /*void Update()
+    {
+        
+        
         if (CorXM < plrPos.position.x && CorXP > plrPos.position.x &&
         CorYM < plrPos.position.y && CorYP > plrPos.position.y)
         {
@@ -41,19 +42,28 @@ public class Damage : MonoBehaviour
             prok = true;
         }
       
-    }
-    public static void damage(int damageCount, ManaHandler mana)
+    }*/
+    public void damage(int damageCount, ManaHandler mana)
     {
 
         mana.Mana -= damageCount;
         
     }
+    public void BreakCurse()
+    {
+        prok = false;
+    }
     private IEnumerator Curse(ManaHandler mana)
     {
-        while (true)
+        while (prok)
         {
-            yield return null;
+            yield return new WaitForSeconds(1f);
+            Transform plrPos = mana.GetComponent<Transform>();
+            int dmgValue = Mathf.RoundToInt(DefaultValue * (sphereCollider.radius - Mathf.Abs((plrPos.position - Center.position).magnitude)));
+            dmgValue = Mathf.Clamp(dmgValue,DefaultValue, mana.MaxMana);
+            damage(dmgValue, mana);
             
         }
+        yield break;
     }
 }

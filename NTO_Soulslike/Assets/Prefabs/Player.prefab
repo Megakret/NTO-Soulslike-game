@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1351231573681824837}
   - component: {fileID: 1351231573681824834}
   - component: {fileID: 1351231573681824835}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cubw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1351231574011435007}
   - component: {fileID: 1351231574011435006}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HitboxShowManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1351231574064371584}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HitboxCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,8 @@ GameObject:
   - component: {fileID: 1351231575340481483}
   - component: {fileID: 1351231575340481482}
   - component: {fileID: 1325614803}
-  m_Layer: 0
+  - component: {fileID: 7601025656989873678}
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -296,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3f08316c84dd743918d92ff9a03faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 11400000, guid: e235d028b8907554eb085e42895ceb4b, type: 2}
+  _weapon: {fileID: 11400000, guid: d08df3377e15f9747a23fd26e894f351, type: 2}
   hitboxCenter: {fileID: 1351231574064371584}
   WhatIsEnemies:
     serializedVersion: 2
@@ -321,7 +322,7 @@ MonoBehaviour:
   _hitboxShow: {fileID: 1351231574011435006}
   spells:
   - {fileID: 11400000, guid: f092b2b294d819549a83a0c7f62a9f96, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b97ba7948f76e88488483058d5ba2b27, type: 2}
   - {fileID: 0}
   ManaBar: {fileID: 0}
   MaxMana: 100
@@ -427,6 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parryWindow: 0.8
   StunTime: 0.4
+  EnemyStunTime: 0
 --- !u!114 &1325614803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,3 +443,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanInteract: 0
   interactable: {fileID: 0}
+--- !u!114 &7601025656989873678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351231575340481503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6b3e4985d6429418aa4a55ff2941bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mana: {fileID: 1351231575340481491}

@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Dialogue
   - Interactable
+  - CurseStart
+  - CurseEnd
   layers:
   - Default
   - TransparentFX

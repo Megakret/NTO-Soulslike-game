@@ -1,22 +1,21 @@
 using UnityEngine;
 using System.Collections;
-public class ran_dom :
+public class ran_dom : MonoBehaviour
 {
-    public Vector3 center; // координаты центра
+    
+    public Transform center; // координаты центра
     public Vector3 size; // координаты в которых будут по€вл€тьс€ объекты
-    public GameObject kub; // наш куб
-    public GameObject sphere;
-    Transform myItem = (Instantiate(Resources.Load("cube")) as kub).transform;
-    Transform myItem = (Instantiate(Resources.Load("cylinder")) as sphere).transform;
+    
+    public GameObject ClearCurseObj;
+    
     void Start() { Spawn(); } 
-    public void Spawn() { 
-        Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-size.z / 2, size.z / 2)); 
-        Instantiate(kub, pos, Quaternion.identity); // осуществл€ем по€вление объекта в заданных случайных позици€х в диапазоне заданных координат
-        Vector3 pos2 = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-size.z / 2, size.z / 2));
-        Instantiate(sphere, pos2, Quaternion.identity); 
+    public void Spawn() {
+        size = gameObject.transform.localScale;
+        Vector3 pos2 = center.position + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-size.z / 2, size.z / 2));
+        Instantiate(ClearCurseObj, pos2, Quaternion.identity); 
     } 
     void OnDrawGizmosSelectes() { 
         Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(transform.localPosition + center, size);
+        Gizmos.DrawCube(transform.localPosition + center.position, size);
     }
 }

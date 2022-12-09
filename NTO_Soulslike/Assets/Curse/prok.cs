@@ -6,7 +6,7 @@ public class prok : MonoCache
 {
     public int damageCount = 10;
     public int damageMana = 1;
-    private void OnCollisionEnter(Collision collision)// Я так понял этот скрипт вешается на проклятие
+    /*private void OnCollisionEnter(Collision collision)// Я так понял этот скрипт вешается на проклятие
     {
         if(collision.gameObject.tag == "Player")
         {
