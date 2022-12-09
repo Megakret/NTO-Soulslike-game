@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sword : Weapon
 {
     public float SpecialRadius;
+    public int UltimateDamage;
     public override void SpecialAbility(WeaponHolder weaponManager, HitboxShow hitboxShow) // Здесь код особенной способки на 3 ударе
     {
         //Debug.Log("Final Hit");
@@ -14,7 +15,7 @@ public class Sword : Weapon
         foreach (Collider enemy in Enemies)
         {
             
-            enemy.GetComponent<Enemy>().TakeDamage(10);
+            enemy.GetComponent<Enemy>().TakeDamage(UltimateDamage);
             manaHandler.Mana += ManaPerHit;
 
         }
