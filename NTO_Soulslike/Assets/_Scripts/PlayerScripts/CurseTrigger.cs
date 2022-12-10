@@ -9,11 +9,11 @@ public class CurseTrigger : MonoBehaviour
     {
         if(other.gameObject.tag == "CurseStart")
         {
-            Damage damage = other.GetComponent<Damage>();
+            Damage damage = other.gameObject.transform.parent.GetComponent<Damage>();
             damage.StartCurse(mana);
         }else if(other.gameObject.tag == "CurseEnd")
         {
-            Damage damage = other.GetComponent<Damage>();
+            Damage damage = other.gameObject.transform.parent.GetComponent<Damage>();
             damage.BreakCurse();
         }
     }

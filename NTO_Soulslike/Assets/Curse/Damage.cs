@@ -22,11 +22,14 @@ public class Damage : MonoBehaviour
     // Update is called once per frame
     public void StartCurse(ManaHandler mana)
     {
-        
+        if (!prok)
+        {
             prok = true;
             StartCoroutine(Curse(mana));
             random.Spawn();
             Debug.Log("Curse");
+        }
+            
             
         
     }
@@ -52,6 +55,7 @@ public class Damage : MonoBehaviour
     public void BreakCurse()
     {
         prok = false;
+        Destroy(gameObject);
     }
     private IEnumerator Curse(ManaHandler mana)
     {
@@ -59,7 +63,7 @@ public class Damage : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             Transform plrPos = mana.GetComponent<Transform>();
-            int dmgValue = Mathf.RoundToInt(DefaultValue * (sphereCollider.radius - Mathf.Abs((plrPos.position - Center.position).magnitude)));
+            int dmgValue = Mathf.RoundToInt(DefaultValue + (sphereCollider.radius - (plrPos.position - Center.position).magnitude));
             dmgValue = Mathf.Clamp(dmgValue,DefaultValue, mana.MaxMana);
             damage(dmgValue, mana);
             

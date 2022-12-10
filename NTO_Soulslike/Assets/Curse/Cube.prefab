@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 5974554432867426754}
   - component: {fileID: 9050651315074521248}
   - component: {fileID: 6059692934684276320}
-  - component: {fileID: 8320422628539482360}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: CurseStart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2a553e89c3c1a46a5c911a4315ffef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 0}
+  center: {fileID: 7142409964411740707}
   size: {x: 0, y: 0, z: 0}
-  sphere: {fileID: 0}
+  ClearCurseObj: {fileID: 8479659365644651706, guid: bf2ade56f1fd9bb4b83b503c98cb4105, type: 3}
 --- !u!114 &6059692934684276320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,24 +113,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd019417d84fae4d8aa7f349eef33e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  random: {fileID: 9050651315074521248}
   plrPos: {fileID: 0}
   prok: 0
   DefaultValue: 1
   Center: {fileID: 7142409964411740707}
-  sphereCollider: {fileID: 8320422628539482360}
---- !u!135 &8320422628539482360
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4348265514185707269}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.8
-  m_Center: {x: 0, y: 0, z: 0}
+  sphereCollider: {fileID: 8131333093642491249}
 --- !u!1001 &5530987335105998935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,6 +184,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9a6dbc07f2437b4eab2049f2f66751c, type: 3}
+--- !u!1 &5763357786280319796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 232371834221570915, guid: f9a6dbc07f2437b4eab2049f2f66751c, type: 3}
+  m_PrefabInstance: {fileID: 5530987335105998935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &8131333093642491249
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5763357786280319796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &7142409964411740707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3448899317653672564, guid: f9a6dbc07f2437b4eab2049f2f66751c, type: 3}
