@@ -14,20 +14,33 @@ public class ThirdPersonController : MonoCache
     [Header("Turning")]
     public float TurnSmooth;
     //Направление движения игрока
-    public Vector3 movDir;
+    [HideInInspector]public Vector3 movDir;
+    [Header("Gravity")]
+    public float GravityValue = 10f;
+    public Transform GroundCheck;
+    public float GroundCheckRadius;
+    public LayerMask Ground;
+
+    private bool IsGrounded;
+    private float fallSpeed = 12f;
+
     //Остальное
+    
     float TurnSmoothVel;
     private Transform CameraPos;
     private float currentTick;
+
     private void Start()
     {
+        
         CameraPos = Camera.main.transform;
         Cursor.lockState = CursorLockMode.Locked;
         
     }
     public override void OnTick()
     {
-        
+        GravityFall();
+
         float XVel = Input.GetAxisRaw("Horizontal");
         float ZVel = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(XVel, 0, ZVel).normalized;
@@ -73,6 +86,21 @@ public class ThirdPersonController : MonoCache
     {
         speed = runSpeed;
         currentTick = 0;
+    }
+    private void GravityFall()
+    {
+        IsGrounded = Physics.CheckSphere(GroundCheck.position, GroundCheckRadius, Ground);
+        if (IsGrounded)
+        {
+            fallSpeed = 2f;
+        }
+        else
+        {
+            fallSpeed += GravityValue * Time.deltaTime;
+            
+        }
+        controller.Move(Vector3.up * -fallSpeed * Time.deltaTime);
+        
     }
     
     
