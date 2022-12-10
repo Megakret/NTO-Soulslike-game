@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: ThrowSpell
   m_EditorClassIdentifier: 
   Name: Throw
-  manaCost: 50
+  manaCost: 30
   microCd: 1
   distance: 50
-  ThrowObject: {fileID: 7976366772443870030, guid: 6a5cbc4d4dd0c504c95929b077067033, type: 3}
-  IgnoreRaycast:
-    serializedVersion: 2
-    m_Bits: 4
+  Damage: 15
+  ThrowObjectPrefab: {fileID: 7976366772443870030, guid: 6a5cbc4d4dd0c504c95929b077067033, type: 3}

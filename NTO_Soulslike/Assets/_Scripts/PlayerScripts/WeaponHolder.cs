@@ -34,7 +34,7 @@ public class WeaponHolder : MonoCache
     public override void OnTick()
     {
         
-        if (Input.GetButtonDown("Fire1") && CanHit && (PlayerStates.currentState == PlayerStates.States.Idle)) // Проверка может ли игрок атаковать
+        if (Input.GetButtonDown("Fire1") && CanHit && (PlayerStates.currentState == PlayerStates.States.Idle) && PlayerStates.CanAttack) // Проверка может ли игрок атаковать
         {
             Click();
             PlayerStates.currentState = PlayerStates.States.Attack;

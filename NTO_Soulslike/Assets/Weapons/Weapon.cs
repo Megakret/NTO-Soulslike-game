@@ -15,9 +15,8 @@ public class Weapon : ScriptableObject
     public float afterComboCd;
     [Tooltip("������������ ���������� ������� ����� ������� ������(���� ����� �� ��� ��� �����, �� ����� ������������)")]
     public float maxComboDelay;
-    [Header("���� ��� �����")]
-    [Tooltip("�� ���� ��������� ������, �� ����� �������, ��� ����� ��������� ����������� �����.")]
-    public EntityType entityType;
+    
+    
     
     
     public virtual void SpecialAbility(WeaponHolder weapon, HitboxShow hitboxShow) { }

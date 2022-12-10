@@ -5,6 +5,7 @@ using System;
 public class PlayerStates : MonoBehaviour
 {
     public static bool IFrame;
+    public static bool CanAttack = true;
     public static States currentState;
     //ƒл€ приоритета изменени€ состо€ни€ игрока
     private static float tick = 0; // ¬рем€, которое отсчитываетс€ от начала смены состо€ни€
