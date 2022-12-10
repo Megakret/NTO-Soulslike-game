@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Parry : MonoCache
 {
+    public AnimatorScript animatorScript;
     public PlayerStates playerStates;
     public PlrStun plrStun;
     public float parryWindow;
@@ -16,6 +17,7 @@ public class Parry : MonoCache
         if (Input.GetButtonDown("Fire2") && playerStates.currentState == PlayerStates.States.Idle)
         {
             ParryMake();
+            animatorScript.Parry();
         }
         
     }
@@ -27,6 +29,7 @@ public class Parry : MonoCache
     }
     public void SuccesfullParry()
     {
+        animatorScript.ParrySuccess();
         DidParry = true;
         playerStates.currentState = PlayerStates.States.Idle;
         StopCoroutine(ParryCoroutine());

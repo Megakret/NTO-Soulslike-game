@@ -6,6 +6,7 @@ public class ThirdPersonController : MonoCache
 {
     public PlayerStates playerStates;
     public CharacterController controller;
+    public AnimatorScript animatorScript;
     [Header("SpeedStats")]
     public float WalkSpeed;
     private float speed;
@@ -41,7 +42,7 @@ public class ThirdPersonController : MonoCache
     public override void OnTick()
     {
         GravityFall();
-
+        animatorScript.RunAnimation(speed);
         float XVel = Input.GetAxisRaw("Horizontal");
         float ZVel = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(XVel, 0, ZVel).normalized;

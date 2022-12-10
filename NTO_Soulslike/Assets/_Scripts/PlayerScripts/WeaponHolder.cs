@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponHolder : MonoCache
 {
+    [Header("Animator")]
+    public AnimatorScript AnimatorScript; 
     [Header("WeaponStats")]
     public Weapon _weapon;
     [Header("ForAttack")]
@@ -33,7 +35,7 @@ public class WeaponHolder : MonoCache
     // Update is called once per frame
     public override void OnTick()
     {
-        Debug.Log(playerStates.currentState);
+        
         if (Input.GetButtonDown("Fire1") && CanHit && (playerStates.currentState == PlayerStates.States.Idle)) // Проверка может ли игрок атаковать
         {
             playerStates.currentState = PlayerStates.States.Attack;
@@ -66,7 +68,14 @@ public class WeaponHolder : MonoCache
         }
         else // Обычная атака
         {
-            
+            if(comboNum == 1)
+            {
+                AnimatorScript.FirstAttack();
+            }
+            else
+            {
+                AnimatorScript.SecondAttack();
+            }
             StartCoroutine(HitCd());
             Attack();
             

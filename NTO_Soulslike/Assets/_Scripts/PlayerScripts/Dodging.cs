@@ -7,6 +7,7 @@ public class Dodging : MonoCache
     public CharacterController controller;
     public ThirdPersonController personController;
     public PlayerStates playerStates;
+    public AnimatorScript animatorScript;
 
     public float DodgeSpeed;
     public float DodgeTime;
@@ -23,7 +24,7 @@ public class Dodging : MonoCache
             playerStates.IFrame = true; // Âûäàòü èãðîêó íåóÿçâèìîñòü
 
             StartCoroutine(Dodge(DodgeSpeed, DodgeTime)); // Ñàì ðûâîê
-
+            animatorScript.Dodge();
             StartCoroutine(DodgeCdCount()); // Âåðíóòü âîçìîæíîñòü äåëàòü ðûâîê ÷åðåç íåêîòîðîå âðåìÿ
             playerStates.ChangeStateFunc(DodgeTime);// Âîçâðàùàåò ñîñòîÿíèå ïîêîÿ
             StartCoroutine(IFrameCd());

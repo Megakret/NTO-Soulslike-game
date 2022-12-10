@@ -1273,6 +1273,8 @@ GameObject:
   - component: {fileID: 2085213215311272034}
   - component: {fileID: 8886598566973969439}
   - component: {fileID: 2325514567496611919}
+  - component: {fileID: 8064850712609294542}
+  - component: {fileID: 919132148648520449}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -1332,6 +1334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3f08316c84dd743918d92ff9a03faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimatorScript: {fileID: 919132148648520449}
   _weapon: {fileID: 11400000, guid: d08df3377e15f9747a23fd26e894f351, type: 2}
   hitboxCenter: {fileID: 750070554490091644}
   WhatIsEnemies:
@@ -1411,6 +1414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStates: {fileID: 2325514567496611919}
   controller: {fileID: 7610733239461780840}
+  animatorScript: {fileID: 919132148648520449}
   WalkSpeed: 3
   runSpeed: 6
   FromWalkToRunTime: 2
@@ -1456,6 +1460,7 @@ MonoBehaviour:
   controller: {fileID: 7610733239461780840}
   personController: {fileID: 7954980288133965167}
   playerStates: {fileID: 2325514567496611919}
+  animatorScript: {fileID: 919132148648520449}
   DodgeSpeed: 8
   DodgeTime: 0.5
   DodgeCd: 2
@@ -1472,6 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44dda6d185b559944bf5c6d96add7fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorScript: {fileID: 919132148648520449}
   playerStates: {fileID: 2325514567496611919}
   plrStun: {fileID: 8886598566973969439}
   parryWindow: 0.8
@@ -1534,6 +1540,39 @@ MonoBehaviour:
   IFrame: 0
   Stop: 0
   currentState: 0
+--- !u!95 &8064850712609294542
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566248631701600792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0a5fbcffb8040840ae8b433f1a9b5c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &919132148648520449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566248631701600792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2126339ae9a40694a9519f64d74bd0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8064850712609294542}
 --- !u!1 &6303227253814192296
 GameObject:
   m_ObjectHideFlags: 0
