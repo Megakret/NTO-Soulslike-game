@@ -15,17 +15,11 @@ public class Weapon : ScriptableObject
     public float afterComboCd;
     [Tooltip("Максимальный промежуток времени между ударами игрока(Если игрок не бил это время, то комбо сбрасывается)")]
     public float maxComboDelay;
-    [Header("Враг или игрок")]
-    [Tooltip("На кого цепляется оружие, от этого зависит, как будет выполнена специальная атака.")]
-    public EntityType entityType;
+    
     
     
     public virtual void SpecialAbility(WeaponHolder weapon, HitboxShow hitboxShow) { }
-    public enum EntityType
-    {
-        Enemy,
-        Player
-    }
+    
 
 }
     
