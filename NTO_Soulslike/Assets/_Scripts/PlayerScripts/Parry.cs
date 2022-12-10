@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Parry : MonoCache
 {
+    public PlayerStates playerStates;
+    public PlrStun plrStun;
     public float parryWindow;
     [Tooltip("Время оглушения, которое игрок получает, если игрок не парировал не одну атаку.")]
     public float StunTime;
@@ -11,7 +13,7 @@ public class Parry : MonoCache
     public float EnemyStunTime;
     public override void OnTick()
     {
-        if (Input.GetButtonDown("Fire2") && PlayerStates.currentState == PlayerStates.States.Idle)
+        if (Input.GetButtonDown("Fire2") && playerStates.currentState == PlayerStates.States.Idle)
         {
             ParryMake();
         }
@@ -19,14 +21,14 @@ public class Parry : MonoCache
     }
     private void ParryMake()
     {
-        PlayerStates.currentState = PlayerStates.States.Parry;
+        playerStates.currentState = PlayerStates.States.Parry;
         StartCoroutine(ParryCoroutine());
         
     }
     public void SuccesfullParry()
     {
         DidParry = true;
-        PlayerStates.currentState = PlayerStates.States.Idle;
+        playerStates.currentState = PlayerStates.States.Idle;
         StopCoroutine(ParryCoroutine());
     }
     private IEnumerator ParryCoroutine()
@@ -39,8 +41,7 @@ public class Parry : MonoCache
         }
         else
         {
-            PlayerStates.currentState = PlayerStates.States.Stunned;
-            StartCoroutine(PlayerStates.ChangeState(StunTime, PlayerStates.States.Idle));
+            plrStun.GetStun(StunTime);
         }
         yield break;
     }

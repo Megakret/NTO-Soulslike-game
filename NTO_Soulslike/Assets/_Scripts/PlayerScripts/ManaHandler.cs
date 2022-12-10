@@ -10,6 +10,7 @@ public class ManaHandler : MonoCache
     public Spell[] spells = new Spell[3];
     public Bar ManaBar;
     public int MaxMana;
+    public PlayerStates playerStates;
     private KeyCode[] KeyCodes = new KeyCode[] {KeyCode.E, KeyCode.R, KeyCode.T};
 
     
@@ -42,12 +43,12 @@ public class ManaHandler : MonoCache
         for (int i = 0; i < spells.Length; i++)
         {
             
-            if (Input.GetKeyDown(KeyCodes[i]) && spells[i] != null && mana >= spells[i].manaCost && PlayerStates.currentState == PlayerStates.States.Idle)
+            if (Input.GetKeyDown(KeyCodes[i]) && spells[i] != null && mana >= spells[i].manaCost && playerStates.currentState == PlayerStates.States.Idle)
             {
-                PlayerStates.currentState = PlayerStates.States.Attack;
+                playerStates.currentState = PlayerStates.States.Attack;
                 
                 Spell spell = spells[i];
-                StartCoroutine(PlayerStates.ChangeState(spell.microCd,PlayerStates.States.Idle));
+                playerStates.ChangeState(spell.microCd);
                 spell.Activate(this,_hitboxShow, plrCenter);
                 Mana -= spell.manaCost;
                 

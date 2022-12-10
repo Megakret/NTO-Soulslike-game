@@ -15,7 +15,7 @@ public class WeaponHolder : MonoCache
     public ManaHandler manaHandler;
     [Header("Controller")]
     public ThirdPersonController personController;
-
+    public PlayerStates playerStates;
 
 
     private Transform CameraPos;
@@ -33,11 +33,12 @@ public class WeaponHolder : MonoCache
     // Update is called once per frame
     public override void OnTick()
     {
-        
-        if (Input.GetButtonDown("Fire1") && CanHit && (PlayerStates.currentState == PlayerStates.States.Idle) && PlayerStates.CanAttack) // ѕроверка может ли игрок атаковать
+        Debug.Log(playerStates.currentState);
+        if (Input.GetButtonDown("Fire1") && CanHit && (playerStates.currentState == PlayerStates.States.Idle)) // ѕроверка может ли игрок атаковать
         {
+            playerStates.currentState = PlayerStates.States.Attack;
             Click();
-            PlayerStates.currentState = PlayerStates.States.Attack;
+            
             
         }
         //Debug.Log(PlayerStates.currentState);
@@ -73,7 +74,7 @@ public class WeaponHolder : MonoCache
 
         //Debug.Log("Hit");
         
-        StartCoroutine(PlayerStates.ChangeState(_weapon.hitCd,PlayerStates.States.Idle)); //—мен€ состо€ни€ на обычное через несколько секунд
+        playerStates.ChangeStateFunc(_weapon.hitCd); //—мен€ состо€ни€ на обычное через несколько секунд
         CanHit = false;
         prevTick = Time.time;
         // ѕоворот игрока в сторону камеры
@@ -97,9 +98,20 @@ public class WeaponHolder : MonoCache
         
         
         // Ќанести урон врагам попавшим под удар и дать ману за каждого задетого врага
-        foreach (Collider enemy in Enemies) {
-            enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
-            manaHandler.Mana += _weapon.ManaPerHit;
+        foreach (Collider collider in Enemies) {
+            Enemy enemy = collider.gameObject.GetComponent<Enemy>();
+            if (enemy.IsParrying)
+            {
+                PlrStun plrStun = gameObject.GetComponent<PlrStun>();
+                Debug.Log(plrStun);
+                plrStun.GetStun(1.5f);
+            }
+            else
+            {
+                enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
+                manaHandler.Mana += _weapon.ManaPerHit;
+            }
+            
         }
 
     }

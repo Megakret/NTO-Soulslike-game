@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ThirdPersonController : MonoCache
 {
+    public PlayerStates playerStates;
     public CharacterController controller;
     [Header("SpeedStats")]
     public float WalkSpeed;
@@ -44,9 +45,9 @@ public class ThirdPersonController : MonoCache
         float XVel = Input.GetAxisRaw("Horizontal");
         float ZVel = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(XVel, 0, ZVel).normalized;
-        if(direction.magnitude >= 0.1f && (PlayerStates.currentState == PlayerStates.States.Idle || PlayerStates.currentState == PlayerStates.States.Attack))
+        if(direction.magnitude >= 0.1f && (playerStates.currentState == PlayerStates.States.Idle || playerStates.currentState == PlayerStates.States.Attack))
         {
-            if(PlayerStates.currentState == PlayerStates.States.Attack)
+            if(playerStates.currentState == PlayerStates.States.Attack)
             {
                 SlowDown();
             }

@@ -6,7 +6,7 @@ public class Dodging : MonoCache
 {
     public CharacterController controller;
     public ThirdPersonController personController;
-    
+    public PlayerStates playerStates;
 
     public float DodgeSpeed;
     public float DodgeTime;
@@ -16,16 +16,16 @@ public class Dodging : MonoCache
     
     public override void OnTick()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && PlayerStates.currentState == PlayerStates.States.Idle && CanDodge) // Ìîæåò ëè èãðîê ñäåëàòü ðûâîê
+        if (Input.GetKeyDown(KeyCode.Q) && playerStates.currentState == PlayerStates.States.Idle && CanDodge) // Ìîæåò ëè èãðîê ñäåëàòü ðûâîê
         {
             CanDodge = false; // Âûêëþ÷àåò èãðîêó âîçìîæíîñòü äåëàòü ðûâîê
-            PlayerStates.currentState = PlayerStates.States.Dodge; // Äàåò èãðîêó ñîñòîÿíèÿ ðûâîê
-            PlayerStates.IFrame = true; // Âûäàòü èãðîêó íåóÿçâèìîñòü
+            playerStates.currentState = PlayerStates.States.Dodge; // Äàåò èãðîêó ñîñòîÿíèÿ ðûâîê
+            playerStates.IFrame = true; // Âûäàòü èãðîêó íåóÿçâèìîñòü
 
             StartCoroutine(Dodge(DodgeSpeed, DodgeTime)); // Ñàì ðûâîê
 
             StartCoroutine(DodgeCdCount()); // Âåðíóòü âîçìîæíîñòü äåëàòü ðûâîê ÷åðåç íåêîòîðîå âðåìÿ
-            StartCoroutine(PlayerStates.ChangeState(DodgeTime, PlayerStates.States.Idle));// Âîçâðàùàåò ñîñòîÿíèå ïîêîÿ
+            playerStates.ChangeStateFunc(DodgeTime);// Âîçâðàùàåò ñîñòîÿíèå ïîêîÿ
             StartCoroutine(IFrameCd());
         }
     }
@@ -54,7 +54,7 @@ public class Dodging : MonoCache
     private IEnumerator IFrameCd()
     {
         yield return new WaitForSeconds(IFramesTime);
-        PlayerStates.IFrame = false;
+        playerStates.IFrame = false;
         yield break;
     }
 }

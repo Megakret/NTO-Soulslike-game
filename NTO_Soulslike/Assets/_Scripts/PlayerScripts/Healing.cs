@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 public class Healing : MonoCache
 {
+    public PlayerStates playerStates;
     public int healCount;
     [Header("Healing Properties")]
     public float HealTime;
@@ -43,19 +44,19 @@ public class Healing : MonoCache
     public override void OnTick()
     {
         
-        if (Input.GetKey(KeyCode.H) && CanHeal && healCount > 0 && (PlayerStates.currentState == PlayerStates.States.Idle || PlayerStates.currentState == PlayerStates.States.Healing))
+        if (Input.GetKey(KeyCode.H) && CanHeal && healCount > 0 && (playerStates.currentState == PlayerStates.States.Idle || playerStates.currentState == PlayerStates.States.Healing))
         {
             Heal();
-            PlayerStates.currentState = PlayerStates.States.Healing;
+            playerStates.currentState = PlayerStates.States.Healing;
             
         }
         else
         {
             
             TickTime = 0;
-            if(PlayerStates.currentState == PlayerStates.States.Healing)
+            if(playerStates.currentState == PlayerStates.States.Healing)
             {
-                PlayerStates.currentState = PlayerStates.States.Idle;
+                playerStates.currentState = PlayerStates.States.Idle;
             }
         }
 

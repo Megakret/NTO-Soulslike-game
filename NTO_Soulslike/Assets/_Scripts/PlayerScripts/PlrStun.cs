@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class PlrStun : MonoBehaviour
 {
+    public PlayerStates playerStates;
     public GameObject stunParticles;
     public Transform Head; // Когда будет моделька будет сюда закреплена нормальная голова, а пока что кидай сюда hitboxCenter игрока.
     public void GetStun(float duration)
     {
-        PlayerStates.currentState = PlayerStates.States.Stunned;
+        Debug.Log("Stun");
+        playerStates.ChangeStateFunc(duration);
+        playerStates.currentState = PlayerStates.States.Stunned;
         GameObject stunParticle = Instantiate(stunParticles, Head.position, Quaternion.identity);
-        StartCoroutine(PlayerStates.ChangeState(duration, PlayerStates.States.Idle));
-        StartCoroutine(ParticleCooldown(duration,stunParticle));
+        playerStates.Stop = true;
+        StartCoroutine(StunCooldown(duration,stunParticle));
     }
-    private IEnumerator ParticleCooldown(float duration, GameObject stunParticle)
+    private IEnumerator StunCooldown(float duration, GameObject stunParticle)
     {
         yield return new WaitForSeconds(duration);
+        playerStates.currentState = PlayerStates.States.Idle;
         Destroy(stunParticle);
         yield break;
         

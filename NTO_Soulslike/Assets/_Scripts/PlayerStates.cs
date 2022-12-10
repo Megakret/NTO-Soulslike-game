@@ -4,9 +4,10 @@ using UnityEngine;
 using System;
 public class PlayerStates : MonoBehaviour
 {
-    public static bool IFrame;
-    public static bool CanAttack = true;
-    public static States currentState;
+    public bool IFrame;
+    public bool Stop;
+    public States currentState;
+    
     //Для приоритета изменения состояния игрока
     private static float tick = 0; // Время, которое отсчитывается от начала смены состояния
     private static float prevDuration = 0; // Длительность предыдущей смены состояния
@@ -19,22 +20,36 @@ public class PlayerStates : MonoBehaviour
         Stunned,
         Healing
     }
-    public static IEnumerator ChangeState(float duration, States state) //Смена состояния игрока через некоторое время
+    public void ChangeStateFunc(float duration)
     {
-       if(prevDuration - tick < duration)
-       {
+        if (prevDuration - tick < duration)
+        {
+            
+            StartCoroutine(ChangeState(duration));
+        }
+
+    }
+    public IEnumerator ChangeState(float duration) //Смена состояния игрока через некоторое время
+    {
+            yield return null;
+        
             prevDuration = duration;
             while (tick <= duration)
             {
+                
                 yield return null;
                 tick += Time.deltaTime;
             }
-            currentState = state;
-            prevDuration = 0;
+        if (currentState != States.Stunned)
+        {
+                currentState = States.Idle;
+                prevDuration = 0;
             
-            tick = 0;
+                tick = 0;
+        }
+                
 
-       }
+       
        yield break;
     }
     

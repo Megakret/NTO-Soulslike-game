@@ -11,12 +11,21 @@ public class Sword : Weapon
         //Debug.Log("Final Hit");
         Collider[] Enemies = Physics.OverlapSphere(weaponManager.gameObject.transform.position, SpecialRadius, weaponManager.WhatIsEnemies);
         ManaHandler manaHandler = weaponManager.GetComponent<ManaHandler>();
+        GameObject plr = manaHandler.gameObject;
         hitboxShow.SphereShow(weaponManager.gameObject.transform.position, SpecialRadius);
-        foreach (Collider enemy in Enemies)
+        foreach (Collider collider in Enemies)
         {
-            
-            enemy.GetComponent<Enemy>().TakeDamage(UltimateDamage);
-            manaHandler.Mana += ManaPerHit;
+            Enemy enemy = collider.gameObject.GetComponent<Enemy>();
+            if (enemy.IsParrying == true)
+            {
+                PlrStun plrStun = plr.GetComponent<PlrStun>();
+                plrStun.GetStun(1.5f);
+            }
+            else
+            {
+                enemy.GetComponent<Enemy>().TakeDamage(UltimateDamage);
+                manaHandler.Mana += ManaPerHit;
+            }
 
         }
 

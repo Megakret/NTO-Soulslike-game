@@ -16,12 +16,18 @@ public class StrongSlash : Spell
         Collider[] Enemies = Physics.OverlapBox(plrCenter.position + plrCenter.forward * Range/2, new Vector3(1,2,Range), plrCenter.rotation, WhatIsEnemies); // Создать хитбокс
         hitboxShow.BoxShow(plrCenter.position + plrCenter.forward * Range / 2, new Vector3(1, 2, Range), plrCenter.rotation);
         plrCenter.parent.rotation = Quaternion.Euler(0,CameraPos.eulerAngles.y,0);
+        GameObject plr = manaHandler.gameObject;
         
         //Debug.Log("Spell!");
 
-        foreach (Collider enemy in Enemies)
+        foreach (Collider collider in Enemies)
         {
-            
+            Enemy enemy = collider.gameObject.GetComponent<Enemy>();
+            if (enemy.IsParrying == true)
+            {
+                PlrStun plrStun = plr.GetComponent<PlrStun>();
+                plrStun.GetStun(1.5f);
+            }
             enemy.gameObject.GetComponent<Enemy>().TakeDamage(_weapon.Damage * DamageMultiplier);
 
         }

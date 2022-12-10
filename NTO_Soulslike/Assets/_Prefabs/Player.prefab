@@ -227,6 +227,8 @@ GameObject:
   - component: {fileID: 1351231575340481482}
   - component: {fileID: 1325614803}
   - component: {fileID: 7601025656989873678}
+  - component: {fileID: 1690428079}
+  - component: {fileID: 1690428080}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -338,6 +340,7 @@ MonoBehaviour:
   ManaPerHit: 10
   manaHandler: {fileID: 1351231575340481491}
   personController: {fileID: 1351231575340481481}
+  playerStates: {fileID: 1690428080}
 --- !u!114 &1351231575340481491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +361,7 @@ MonoBehaviour:
   - {fileID: 0}
   ManaBar: {fileID: 0}
   MaxMana: 100
+  playerStates: {fileID: 1690428080}
 --- !u!114 &1351231575340481488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9169d9496c0fbe646a336676a5cf05b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStates: {fileID: 1690428080}
   healCount: 0
   HealTime: 1.5
   HPPerHeal: 50
@@ -403,6 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb431cd1d527a844aa4959168fe4a153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStates: {fileID: 1690428080}
   controller: {fileID: 1351231575340481494}
   WalkSpeed: 5
   runSpeed: 10
@@ -448,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1351231575340481494}
   personController: {fileID: 1351231575340481481}
+  playerStates: {fileID: 1690428080}
   DodgeSpeed: 10
   DodgeTime: 0.5
   DodgeCd: 2
@@ -464,6 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44dda6d185b559944bf5c6d96add7fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStates: {fileID: 1690428080}
   parryWindow: 0.8
   StunTime: 0.4
   EnemyStunTime: 0
@@ -494,3 +502,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mana: {fileID: 1351231575340481491}
+--- !u!114 &1690428079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351231575340481503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19569ddd2b41e9d47adeae17c2191bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStates: {fileID: 1690428080}
+  stunParticles: {fileID: 5623417540119024064, guid: 5a98790f30df90f468023f63bb090c56, type: 3}
+  Head: {fileID: 1351231574064371584}
+--- !u!114 &1690428080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351231575340481503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a95b8c21ceb9a4a96253cd1ef6384e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IFrame: 0
+  currentState: 0

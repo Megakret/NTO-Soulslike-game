@@ -4,6 +4,7 @@ using UnityEngine;
 using DialogueEditor;
 public class DialogueEvents : MonoBehaviour
 {
+    public PlayerStates playerStates;
     private void OnEnable()
     {
         ConversationManager.OnConversationStarted += BeginDialogue;
@@ -17,11 +18,11 @@ public class DialogueEvents : MonoBehaviour
     public void BeginDialogue()
     {
         Cursor.lockState = CursorLockMode.None;
-        PlayerStates.currentState = PlayerStates.States.Stunned;
+        playerStates.currentState = PlayerStates.States.Stunned;
     }
     public void EndDialogue()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        PlayerStates.currentState = PlayerStates.States.Idle;
+        playerStates.currentState = PlayerStates.States.Idle;
     }
 }
