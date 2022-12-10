@@ -1782,9 +1782,9 @@ GameObject:
   - component: {fileID: 1637480832}
   - component: {fileID: 1637480831}
   - component: {fileID: 1637480830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1821,6 +1821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c240c4713b7ff845a9a56f15b521b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 100
+  IsParrying: 0
   speed: 3
   positionPatrol: 100
   stoppingDistanse: 20
@@ -2520,6 +2522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
+  IsParrying: 0
 --- !u!1 &2092664860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,10 +2846,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5470919920846204087, guid: 3e0112f28c0a630439d7842465bbf0e6, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5470919920846204087, guid: 3e0112f28c0a630439d7842465bbf0e6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -15,8 +15,9 @@ MonoBehaviour:
   weaponName: Sword
   Damage: 5
   ManaPerHit: 10
+  weaponRange: 3
   hitCd: 0.6
   afterComboCd: 1
-  weaponRange: 3
   maxComboDelay: 1.5
   SpecialRadius: 5
+  UltimateDamage: 0
