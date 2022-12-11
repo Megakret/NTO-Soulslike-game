@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1228120897280312904}
-  spawnPoint: {x: -14, y: -0.85, z: -22}
+  spawnPoint: {x: 180, y: 10.5, z: 339}
 --- !u!1 &1228120896376094459
 GameObject:
   m_ObjectHideFlags: 0
