@@ -13,6 +13,7 @@ public class PlrStun : MonoBehaviour
         playerStates.ChangeStateFunc(duration);
         playerStates.currentState = PlayerStates.States.Stunned;
         GameObject stunParticle = Instantiate(stunParticles, Head.position, Quaternion.identity);
+        stunParticle.GetComponent<ParticleSystem>().Play();
         playerStates.Stop = true;
         StartCoroutine(StunCooldown(duration,stunParticle));
     }
