@@ -9,6 +9,7 @@ public class Parry : MonoCache
     public float StunTime;
     private bool DidParry; // ѕровер€ет спарировал ли игрок чью то атаку
     public float EnemyStunTime;
+
     public override void OnTick()
     {
         if (Input.GetButtonDown("Fire2") && PlayerStates.currentState == PlayerStates.States.Idle)

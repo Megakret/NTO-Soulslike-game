@@ -27,8 +27,8 @@ public class Bar : MonoBehaviour
         }
         while (value != _EndValue)
         {
-            Debug.Log(value);
-            Debug.Log(_EndValue);
+            //Debug.Log(value);
+            //Debug.Log(_EndValue);
             yield return null;
             
             value += Increase;

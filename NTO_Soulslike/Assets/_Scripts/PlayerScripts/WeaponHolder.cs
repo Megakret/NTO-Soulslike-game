@@ -98,8 +98,11 @@ public class WeaponHolder : MonoCache
         
         // Нанести урон врагам попавшим под удар и дать ману за каждого задетого врага
         foreach (Collider enemy in Enemies) {
-            enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
-            manaHandler.Mana += _weapon.ManaPerHit;
+            if (!enemy.GetComponent<Enemy>().IsParrying)
+            {
+                enemy.GetComponent<Enemy>().TakeDamage(_weapon.Damage);
+                manaHandler.Mana += _weapon.ManaPerHit;
+            }
         }
 
     }
