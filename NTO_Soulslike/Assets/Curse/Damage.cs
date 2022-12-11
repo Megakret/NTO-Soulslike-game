@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class Damage : MonoBehaviour
 {
-
+    
+    
     public ran_dom random;
     public Transform plrPos;
     public bool prok;
@@ -59,8 +60,10 @@ public class Damage : MonoBehaviour
     }
     private IEnumerator Curse(ManaHandler mana)
     {
+        
         while (prok)
         {
+            
             yield return new WaitForSeconds(1f);
             Transform plrPos = mana.GetComponent<Transform>();
             int dmgValue = Mathf.RoundToInt(DefaultValue + (sphereCollider.radius - (plrPos.position - Center.position).magnitude));
@@ -68,6 +71,7 @@ public class Damage : MonoBehaviour
             damage(dmgValue, mana);
             
         }
+        
         yield break;
     }
 }

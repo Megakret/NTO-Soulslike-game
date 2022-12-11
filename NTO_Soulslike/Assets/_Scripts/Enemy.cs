@@ -6,9 +6,17 @@ public class Enemy : MonoCache
 {
     public float HP;
     public bool IsParrying; // Используй, чтобы показать парирует ли моб атаку
+    public PlrStun plrStun;
     public void TakeDamage(float damage)
     {
-        HP -= damage;
-        //Debug.Log(HP);
+        if (!IsParrying)
+        {
+            HP -= damage;
+            Debug.Log(HP);
+        }
+        else
+        {
+            plrStun.GetStun(0.8f);
+        }
     }
 }

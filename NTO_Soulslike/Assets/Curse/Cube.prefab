@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd019417d84fae4d8aa7f349eef33e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
   random: {fileID: 9050651315074521248}
   plrPos: {fileID: 0}
   prok: 0
