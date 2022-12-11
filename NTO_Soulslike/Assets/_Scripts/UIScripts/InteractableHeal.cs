@@ -9,6 +9,6 @@ public class InteractableHeal : Interactable
     {
         Healing healing = plr.GetComponent<Healing>();
         healing.HealCount += PancakeCount;
-        Destroy(gameObject);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 }

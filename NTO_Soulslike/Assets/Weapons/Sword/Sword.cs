@@ -13,6 +13,7 @@ public class Sword : Weapon
         ManaHandler manaHandler = weaponManager.GetComponent<ManaHandler>();
         GameObject plr = manaHandler.gameObject;
         hitboxShow.SphereShow(weaponManager.gameObject.transform.position, SpecialRadius);
+        plr.GetComponent<AnimatorScript>().FinalSwordAttack();
         foreach (Collider collider in Enemies)
         {
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
